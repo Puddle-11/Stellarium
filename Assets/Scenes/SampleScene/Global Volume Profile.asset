@@ -35,13 +35,13 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1.07
+    m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.85
+    m_Value: 2.9
   scatter:
     m_OverrideState: 0
-    m_Value: 0.7
+    m_Value: 1
   clamp:
     m_OverrideState: 0
     m_Value: 65472
@@ -79,22 +79,22 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1.36
+    m_Value: 0
   tintColor:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 1, g: 0.9636165, b: 0.8820755, a: 1}
   bloomMip:
     m_OverrideState: 0
     m_Value: 1
   firstFlareIntensity:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 1.18
   secondaryFlareIntensity:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 1.5
   warpedFlareIntensity:
     m_OverrideState: 0
-    m_Value: 4.93
+    m_Value: 4.59
   warpedFlareScale:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1}
@@ -114,8 +114,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1.88
   streaksIntensity:
-    m_OverrideState: 1
-    m_Value: 0.06
+    m_OverrideState: 0
+    m_Value: 0.43
   streaksLength:
     m_OverrideState: 1
     m_Value: 0.185
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 0
