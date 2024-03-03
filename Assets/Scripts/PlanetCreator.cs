@@ -91,6 +91,8 @@ public class PlanetCreator : MonoBehaviour
     public Constelation[] ConstelationList;
 
     public string[] greekLettes;
+    public string[] PlanetNames;
+
     private void Start()
     {
        
@@ -208,25 +210,10 @@ public class PlanetCreator : MonoBehaviour
     }
     public void generateStar(float _starSize, Color _starCol)
     {
-        string apendix = "";
-        if(RandGen.Next(0, 15) == 1)
-        {
-            apendix = "A";
-        }
-        else if (RandGen.Next(0, 15) == 2)
-        {
-            apendix = "B";
-
-        }
-        else if (RandGen.Next(0, 15) == 3)
-        {
-            apendix = "C";
-
-        }
+     
         int starInex = RandGen.Next(0, ConstelationList.Length);
-        StarName = greekLettes[RandGen.Next(0, ConstelationList[starInex].starNum)] + " " + ConstelationList[starInex].suffixName + " " + apendix;
-        Debug.Log(StarName);
-        StopCoroutine("LerpStarColor");
+        StarName = greekLettes[RandGen.Next(0, ConstelationList[starInex].starNum)] + " " + ConstelationList[starInex].suffixName;
+         StopCoroutine("LerpStarColor");
         StopCoroutine("LerpStarSize");
         StartCoroutine(LerpStarSize(star.transform.localScale.x, _starSize * starSize + minStarSize, starChangeTime));
         StartCoroutine(LerpStarColor(CurrentStarColor, _starCol, starChangeTime));
@@ -276,9 +263,50 @@ public class PlanetCreator : MonoBehaviour
         GenerateTerraRings();
         GenerateGasRings();
         generateAsteroidBelt();
+        for (int i = 0; i < AllPlanets.Count; i++)
+        {
+           
+            if(AllPlanets[i].gameObject.tag == "Planet")
+            {
+
+              AllPlanets[i].GetComponent<Gravity>().bodyName = StarName + "-" + ConvertB24(i + 1, 26);
+            }
+        }
     }
 
+    private string ConvertB24(long decimalNumber, int radix)
+    {
+        const int BitsInLong = 64;
+        const string Digits = "abcdefghijklmnopqrstuvwxyz";
+        //======================
+        //Saftey
+        //======================
+        if (radix < 2 || radix > Digits.Length)
+            throw new ArgumentException("The radix must be >= 2 and <= " + Digits.Length.ToString());
 
+        if (decimalNumber == 0)
+            return "0";
+        //======================
+
+
+        int index = BitsInLong - 1;
+        long currentNumber = Math.Abs(decimalNumber);
+        char[] charArray = new char[BitsInLong];
+
+        while (currentNumber != 0)
+        {
+            int remainder = (int)(currentNumber % radix);
+            charArray[index--] = Digits[remainder];
+            currentNumber = currentNumber / radix;
+        }
+
+        string result = new String(charArray, index + 1, BitsInLong - index - 1);
+        if (decimalNumber < 0)
+        {
+            result = "-" + result;
+        }
+        return result;
+    }
 
 
 

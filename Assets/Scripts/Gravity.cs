@@ -12,7 +12,7 @@ public class Gravity : MonoBehaviour
 
     [HideInInspector] public float Mass;
 
-
+    public string bodyName = "";
 
 
     //ONLY USE AUTO START VELOCITY TYPE IF SIMULATION IS SINGLEBODY
