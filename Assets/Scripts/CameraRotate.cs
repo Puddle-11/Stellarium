@@ -3,46 +3,54 @@ using UnityEngine;
 
 public class CameraRotate : MonoBehaviour
 {
-    public Camera cam;
+    private Vector3 defaultPos;
+    private Quaternion defaultRot;
+
+    [SerializeField] private Camera cam;
     public bool isControlable;
-    public Transform target;
-    public float distance = 5.0f;
-    public float Speed = 50.0f;
-
-
-
-    public float smoothTime = 2f;
-
-    float rotationYAxis = 0.0f;
-    float rotationXAxis = 0.0f;
-
-    float velocityX = 0.0f;
-    float velocityY = 0.0f;
-
+    [SerializeField] private Transform target;
+    [SerializeField] private float distance = 5.0f;
+    [SerializeField] private float Speed = 50.0f;
+    [SerializeField] private float smoothTime = 2f;
+    private float rotationYAxis = 0.0f;
+    private float rotationXAxis = 0.0f;
+    private float velocityX = 0.0f;
+    private float velocityY = 0.0f;
     private Vector2 LastMousePos;
     private Vector2 MousePos;
-
-
-
+ 
+    private float lerpTimer;
+   [SerializeField] private float changeSpeed;
 
     public void SetControllable(bool value)
     {
-        isControlable = value;
+       
+            isControlable = value;
+       
     }
 
     // Use this for initialization
     void Start()
     {
-
+        defaultPos = transform.position;
+        defaultRot = transform.rotation;
         Vector3 angles = transform.eulerAngles;
 
         rotationYAxis = (rotationYAxis == 0) ? angles.y : rotationYAxis;
         rotationXAxis = angles.x;
     }
+    private void Update()
+    {
+
+     
+    }
     private void FixedUpdate()
     {
+        if (isControlable)
+        {
+
         MousePos = Input.mousePosition;
-        if (Input.GetMouseButton(0) && isControlable)
+        if (Input.GetMouseButton(0))
         {
        
                     //------------------------------------------------------------------------------
@@ -53,9 +61,15 @@ public class CameraRotate : MonoBehaviour
         }
         LastMousePos = MousePos;
         rotate();
-        if (Input.GetMouseButton(0) && isControlable)
+        if (Input.GetMouseButton(0))
         {
             velocityY += Speed * Input.GetAxis("Mouse Y") * 0.02f;
+        }
+        }
+        else
+        {
+            transform.position = defaultPos;
+            transform.rotation = defaultRot;
         }
     }
 

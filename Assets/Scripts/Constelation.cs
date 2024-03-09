@@ -7,7 +7,7 @@ public class Constelation
 {
     public string constelatioName;
     public string suffixName;
-
+    public Sprite ConstelationImage;
     public int starNum;
 
 }

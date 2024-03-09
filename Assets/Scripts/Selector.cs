@@ -33,7 +33,6 @@ public class Selector : MonoBehaviour
         if (Physics.Raycast(CM.ScreenToWorldPoint(Input.mousePosition), dir, out hit, Mathf.Infinity, LM))
         {
             SelectedObjPos = UICam.WorldToScreenPoint(hit.collider.gameObject.transform.position);
-            testUI.GetComponent<RectTransform>().anchoredPosition = SelectedObjPos;
         }
 
     }

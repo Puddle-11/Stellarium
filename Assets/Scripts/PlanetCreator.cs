@@ -12,19 +12,23 @@ using System;
 using UnityEngine.Rendering.Universal;
 using System.Runtime.CompilerServices;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 
 public class PlanetCreator : MonoBehaviour
 {
     [Space]
     [Space]
     [Header("General")]
-    [SerializeField] private string seed;
-    [SerializeField] private TMP_InputField SeedText;
+    [SerializeField] public string seed;
+    public string subSeed;
+    [SerializeField] private TextMeshProUGUI SeedText;
     [SerializeField] private GameObject SystemObjectRef;
     [SerializeField] private Volume PostProfile;
     [SerializeField] private GameObject BasePlanet;
     [SerializeField] private GameObject BaseAsteroid;
     [SerializeField] private GameObject star;
+    [SerializeField] private TextMeshProUGUI starNamefield;
+    [SerializeField] private UnityEngine.UI.Image constelationImage;
 
     [Space]
     [Space]
@@ -59,7 +63,6 @@ public class PlanetCreator : MonoBehaviour
     [SerializeField] private float asteroidBeltSize;
     [SerializeField] private int asteroidBeltDensity;
     [SerializeField] private float asteriodFalloff;
-
     [SerializeField] private Vector2 asteroidSize;
     [SerializeField] private Vector2 asteroidBeltRange;
 
@@ -89,26 +92,25 @@ public class PlanetCreator : MonoBehaviour
     private int tempseed;
     private string StarName;
     public Constelation[] ConstelationList;
-
+    private bool abletoGenerate = true;
     public string[] greekLettes;
     public string[] PlanetNames;
 
     private void Start()
     {
-       
         PostProfile.profile.TryGet(out _bloom);
         SystemManagerRef = SystemObjectRef.GetComponent<SystemManager>();
-        UpdateExplore();
+        RunGenerate();
         
     }
   
     
-    public void OnButtonPress()
+    public void RunGenerate()
     {
         Explore = false;
             GenerateSystem(seed);
     }
-    public void UpdateExplore()
+    public void RunExplore()
     {
         Explore = true;
         GenerateSystem(seed);
@@ -117,17 +119,18 @@ public class PlanetCreator : MonoBehaviour
 
     private void Update()
     {
-
-
-        if (SeedText.isFocused == true) seed = SeedText.text;
-        
-        if (SeedText.isFocused == false) SeedText.text = seed;
-
-
+        SeedText.text = seed;
     }
     public void GenerateSystem(string _seed)
     {
+        if (!abletoGenerate)
+        {
+            return;
+        }
+        abletoGenerate = false;
 
+
+        RandGen = new System.Random(seed.GetHashCode());
 
         for (int i = 0; i < AllPlanets.Count; i++)
         {
@@ -137,11 +140,12 @@ public class PlanetCreator : MonoBehaviour
         //=============================================
         //Get seed
         //=============================================
-        seed = "";
+        subSeed = "";
         if (Explore)
         {
 
             SeedDigits = GenerateSeed(12);
+           
         }
         else
         {
@@ -149,32 +153,34 @@ public class PlanetCreator : MonoBehaviour
 
             for (int x = 0; x < SeedDigits.Length; x++)
             {
-                if (x < _seed.Length)
+                int temp;
+                if (x < _seed.Length && int.TryParse(_seed[x].ToString(), out temp))
                 {
-                    int.TryParse(_seed[x].ToString(), out SeedDigits[x]);
+                    SeedDigits[x] = temp;
 
                 }
                 else
                 {
-                    SeedDigits[x] = 0;
+                    SeedDigits[x] = RandGen.Next(0, 10);
                 }
 
             }
         }
         for (int i = 0; i < SeedDigits.Length; i++)
         {
-            seed = seed + SeedDigits[i].ToString();
+            subSeed = subSeed + SeedDigits[i].ToString();
         }
-        SeedText.text = seed;
-
-
+        SeedText.text = subSeed;
         string tempseed = "";
         for (int i = 0; i < 5; i++)
         {
             tempseed = tempseed + SeedDigits[i].ToString();
         }
         int _seedint = int.Parse(tempseed);
-        RandGen = new System.Random(seed.GetHashCode());
+       if(seed == null || seed == string.Empty)
+        {
+            seed = subSeed;
+        }
         //=============================================
         //Digit 0: number of Terestrial planets (per ring)
         //Digit 1: number of gasious planets (per ring)
@@ -203,7 +209,7 @@ public class PlanetCreator : MonoBehaviour
 
 
       
-        generateStar(FilteredSeed[8], StarColor.Evaluate(   (float)(FilteredSeed[9] * 10 + FilteredSeed[10])   /100)   );
+        generateStar(FilteredSeed[8], StarColor.Evaluate(   (float)(FilteredSeed[9] * 10 + FilteredSeed[10])/100));
 
 
 
@@ -212,8 +218,19 @@ public class PlanetCreator : MonoBehaviour
     {
      
         int starInex = RandGen.Next(0, ConstelationList.Length);
-        StarName = greekLettes[RandGen.Next(0, ConstelationList[starInex].starNum)] + " " + ConstelationList[starInex].suffixName;
-         StopCoroutine("LerpStarColor");
+        StarName = greekLettes[RandGen.Next(0, ConstelationList[starInex].starNum)] + " " + ConstelationList[starInex].suffixName + "-" + ConvertB24(RandGen.Next(0, 24), 24) + RandGen.Next(0, 10000);
+
+        starNamefield.text = StarName.ToUpper();
+        if (ConstelationList[starInex].ConstelationImage != null)
+        {
+            constelationImage.sprite = ConstelationList[starInex].ConstelationImage;
+        }
+        else
+        {
+            constelationImage.sprite = null;
+
+        }
+        StopCoroutine("LerpStarColor");
         StopCoroutine("LerpStarSize");
         StartCoroutine(LerpStarSize(star.transform.localScale.x, _starSize * starSize + minStarSize, starChangeTime));
         StartCoroutine(LerpStarColor(CurrentStarColor, _starCol, starChangeTime));
@@ -272,6 +289,7 @@ public class PlanetCreator : MonoBehaviour
               AllPlanets[i].GetComponent<Gravity>().bodyName = StarName + "-" + ConvertB24(i + 1, 26);
             }
         }
+        abletoGenerate = true;
     }
 
     private string ConvertB24(long decimalNumber, int radix)
@@ -446,11 +464,12 @@ public class PlanetCreator : MonoBehaviour
     
     public int[] GenerateSeed(int Size)
     {
+        seed = "";
         int[] res = new int[Size];
         for (int i = 0; i < Size; i++)
         {
             res[i] = UnityEngine.Random.Range(1, 10);
-
+            seed += res[i].ToString();
         }
         return res;
     }
