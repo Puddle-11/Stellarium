@@ -41,7 +41,6 @@ public class SeedInput : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(EV.currentSelectedGameObject);
         EdgeMove();
         if (selected)
         {

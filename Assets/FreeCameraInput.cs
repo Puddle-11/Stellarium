@@ -43,6 +43,8 @@ public class FreeCameraInput : MonoBehaviour
             icon.color = dissableColor;
         }
 
+
+
         edgeLerpTimer += Time.deltaTime;
 
         if (EV.currentSelectedGameObject == ClickButton.gameObject && Input.GetMouseButton(0))
@@ -75,15 +77,6 @@ public class FreeCameraInput : MonoBehaviour
                 Edges[i].transform.localPosition = Vector3.Lerp(Edges[i].transform.localPosition, edgeStartPos[i], edgeLerpTimer * edgeChangeSpeed);
             }
         }
-        if (selected)
-        {
-            if (Input.anyKeyDown)
-            {
-
-            }
-
-
-
-        }
+   
     }
 }
