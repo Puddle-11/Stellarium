@@ -102,6 +102,7 @@ public class PlanetCreator : MonoBehaviour
     public string[] greekLettes;
     public SpecialStar[] specialStars;
     private bool Quasar;
+    private SpecialStar currentCustomStar;
     private void Start()
     {
         PostProfile.profile.TryGet(out _bloom);
@@ -149,7 +150,7 @@ public class PlanetCreator : MonoBehaviour
         #region Initialize Generator
         if (!abletoGenerate) return;
         abletoGenerate = false;
-        SpecialStar SP = null;
+        currentCustomStar = null;
         for (int i = 0; i < AllPlanets.Count; i++)
         {
             Destroy(AllPlanets[i]);
@@ -170,6 +171,7 @@ public class PlanetCreator : MonoBehaviour
         }
 
         #region Generate Custom Star Variables
+        
         for (int i = 0; i < specialStars.Length; i++)
             {
                 if (seed == specialStars[i].name.ToUpper() || seed == specialStars[i].designatedSeed)
@@ -177,7 +179,7 @@ public class PlanetCreator : MonoBehaviour
                     seed = specialStars[i].designatedSeed;
                     subSeed = specialStars[i].designatedSeed;
                     Quasar = specialStars[i].isQuasar;
-                    SP = specialStars[i];
+                    currentCustomStar = specialStars[i];
                     break;
                 }
             }
@@ -200,9 +202,7 @@ public class PlanetCreator : MonoBehaviour
         int r = RandGen.Next(0, 100);//Roll a 100 sided dice
 
         //If the role was below the threshold, the current star will be a Quasar
-        if (r > Quasarfrequency) Quasar = false; 
-        else Quasar = true;
-
+        Quasar = r > Quasarfrequency ? false : true;
         BlackHole.SetActive(Quasar); //Set the black hole to be active or inactive depending on Quasar State
         Vector3 StarScale = Vector3.zero;
         if (!Quasar)
@@ -217,7 +217,7 @@ public class PlanetCreator : MonoBehaviour
         #endregion
 
         //Start Generation Process
-        GenerateStar(StarScale, StarColor.Evaluate((float)(SeedDigits[9] * 10 + SeedDigits[10]) / 100), SP);
+        GenerateStar(StarScale, StarColor.Evaluate((float)(SeedDigits[9] * 10 + SeedDigits[10]) / 100));
     }
     #region Seed Generation and Filtration
     public int[] GenerateSeed()
@@ -276,7 +276,7 @@ public class PlanetCreator : MonoBehaviour
 
 
     #endregion
-    public void GenerateStar(Vector3 _starSize, Color _starCol, SpecialStar _CustomStar)
+    public void GenerateStar(Vector3 _starSize, Color _starCol)
     {
         //==============================================================
         //Initialize Star Generator
@@ -287,22 +287,22 @@ public class PlanetCreator : MonoBehaviour
         //==============================================================
         //Generate Star Variables
         //==============================================================
-        if (_CustomStar != null)
+        if (currentCustomStar != null)
         {
-            if(_CustomStar.useCustomTint) _starTint = _CustomStar.customTint;
+            if(currentCustomStar.useCustomTint) _starTint = currentCustomStar.customTint;
 
             //If the star has a custom color, set the star color to that
-            if (_CustomStar.useCustomStarColor)
+            if (currentCustomStar.useCustomStarColor)
             {
                 float ATemp = _starCol.a;
-                _starCol = _CustomStar.customStarColor;
+                _starCol = currentCustomStar.customStarColor;
                 _starCol.a = ATemp;
             }
 
-            starName = _CustomStar.name; 
-            constellationNamefield.text = _CustomStar.constellationName; //Set UI element to custom Constelation name
-            descriptionField.text = _CustomStar.description; //Set UI element to custom description 
-            constelationImage.sprite = constellationList.Find((x) => x.constelatioName == _CustomStar.constellationName).ConstelationImage; //find the constelation that matches the custom star name, and grab the constelation image
+            starName = currentCustomStar.name; 
+            constellationNamefield.text = currentCustomStar.constellationName; //Set UI element to custom Constelation name
+            descriptionField.text = currentCustomStar.description; //Set UI element to custom description 
+            constelationImage.sprite = constellationList.Find((x) => x.constelatioName == currentCustomStar.constellationName).ConstelationImage; //find the constelation that matches the custom star name, and grab the constelation image
 
         }
         else
@@ -342,7 +342,7 @@ public class PlanetCreator : MonoBehaviour
         m[0].material.color = Color.white;
         //==============================================================
 
-        while (star.transform.localScale != _End)
+        while (star.transform.localScale != _End || CurrentStarColor != _Color)
         {
             //==============================================================
             //Color Lerp
@@ -368,6 +368,7 @@ public class PlanetCreator : MonoBehaviour
             stimer += Time.deltaTime;
         }
         yield return new WaitForSeconds(starChangeDelay);
+        GenerateBinaryStar();
         GenerateTerraRings();
         GenerateGasRings();
         generateAsteroidBelt();
@@ -403,67 +404,49 @@ public class PlanetCreator : MonoBehaviour
         }
 
         string result = new String(charArray, index + 1, BitsInLong - index - 1);
-        if (decimalNumber < 0)
-        {
-            result = "-" + result;
-        }
+        if (decimalNumber < 0) result = "-" + result;
+
         return result;
     }
     #endregion
 
-
-    public void GenerateTerraRings()
+    public void GenerateBinaryStar()
     {
-        float _startDist = 0;
-        if (Quasar)
+        //==============================================================
+        //Initialize Generator
+        //==============================================================
+        //Check if binary star is true
+        if (currentCustomStar == null || currentCustomStar.binaryStar == null) return;
+        Generate(currentCustomStar.binaryStarSize, currentCustomStar.binaryStarDistance, defaultMass, Vector2.zero, 1, currentCustomStar.binaryStar);
+
+        //==============================================================
+        //Set Binary Star Variables
+        //==============================================================
+        GameObject BinaryStar = AllPlanets.Find((x) => x.tag == "Binary Star");
+        if (BinaryStar != null)
         {
-            _startDist = startDistance * 1.5f;
-        }
-        else
-        {
-            _startDist = startDistance;
-        }
-        for (int i = 0; i < specialStars.Length; i++)
-        {
-            if (subSeed == specialStars[i].designatedSeed && specialStars[i].binaryStar != null)
+            MeshRenderer[] m = BinaryStar.GetComponentsInChildren<MeshRenderer>();
+            for (int y = 1; y < m.Length; y++)
             {
-                Generate(specialStars[i].binaryStarSize, specialStars[i].binaryStarDistance, defaultMass, Vector2.zero, 1, specialStars[i].binaryStar);
-
-                _startDist = (_startDist + 15);
-                for (int x = 0; x < AllPlanets.Count; x++)
-                {
-                    if (AllPlanets[x].tag == "Binary Star")
-                    {
-                        MeshRenderer[] m = AllPlanets[x].GetComponentsInChildren<MeshRenderer>();
-                        for (int y = 1; y < m.Length; y++)
-                        {
-
-                            m[y].material.color = StarColor.Evaluate(specialStars[i].binaryStarTemp);
-                        }
-                        break;
-                    }
-                }
-                break;
+                m[y].material.color = StarColor.Evaluate(currentCustomStar.binaryStarTemp);
             }
         }
+        //==============================================================
+    }
+    public void GenerateTerraRings()
+    {
+        float _startDist = Quasar ? startDistance * 1.5f : startDistance; //ternary operator. if quasar then start distance is 50% more, otherwise its normal
+        if (currentCustomStar != null && currentCustomStar.binaryStar != null) _startDist += 15;//Increase start dist when there is a binar star
+
+        //==============================================================
+        //Generate Terra Rings
+        //==============================================================
         TerraRings = new Vector2[SeedDigits[2]];
         for (int i = 0; i < TerraRings.Length; i++)
         {
-            if (i == 0)
-            {
-
-                int Size = RandGen.Next(minRingSize, SeedDigits[4]);
-                TerraRings[i].x = _startDist + SeedDigits[8];
-                TerraRings[i].y = _startDist + SeedDigits[8] + Size;
-            }
-            else
-            {
-                int Size = RandGen.Next(minRingSize, SeedDigits[4]);
-
-                TerraRings[i].x = TerraRings[i - 1].y + SeedDigits[6];
-                TerraRings[i].y = TerraRings[i - 1].y + SeedDigits[6] + Size;
-
-            }
+            int Size = RandGen.Next(minRingSize, SeedDigits[4]);
+            float ringStart = i == 0 ? _startDist + SeedDigits[8] : TerraRings[i - 1].y + SeedDigits[6];
+            TerraRings[i] = new Vector2(ringStart, ringStart + Size);
         }
         InstantiateRings(TerraRings, SeedDigits[0], terraPlanetSize, BasePlanet);
     }
@@ -495,10 +478,7 @@ public class PlanetCreator : MonoBehaviour
             }
         }
     }
-    public void InstantiateBinaryStar(float _dist, int _quantity, float _size, GameObject _prefab)
-    {
-        Generate(_size, _dist, defaultMass, Vector2.zero, 1, _prefab);
-    }
+   
     public void generateAsteroidBelt()
     {
 
@@ -583,6 +563,8 @@ public class PlanetCreator : MonoBehaviour
     {
         float angle = RandGen.Next(0, 360) / (Mathf.PI / 180);
         Vector3 SpawnPos = new Vector3(Mathf.Cos(angle), Mathf.Cos(angle) * _AxisTilt.x, Mathf.Sin(angle)).normalized * _Distance;
+    
+
         GameObject _Instance = Instantiate(_Prefab, SpawnPos, Quaternion.identity, SystemObjectRef.transform);
         AllPlanets.Add(_Instance);
         //==============================================================
