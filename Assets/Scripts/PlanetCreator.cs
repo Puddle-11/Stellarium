@@ -7,14 +7,11 @@ using UnityEngine.UIElements;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using JetBrains.Annotations;
 using System;
 using UnityEngine.Rendering.Universal;
-using System.Runtime.CompilerServices;
 using System.Linq;
-using UnityEditor.Experimental.GraphView;
-using NUnit.Framework;
-using System.Runtime.InteropServices.WindowsRuntime;
+
+
 
 public class PlanetCreator : MonoBehaviour
 {
@@ -99,13 +96,10 @@ public class PlanetCreator : MonoBehaviour
     private List<GameObject> AllPlanets = new List<GameObject>();
     private bool Explore;
     private Color CurrentStarColor = Color.black;
-    private int tempseed;
-    private string StarName;
+    private Color CurrentStarTint = Color.black;
     public List<Constelation> constellationList;
-    public Constelation[] ConstelationList;
     private bool abletoGenerate = true;
     public string[] greekLettes;
-    private string[] PlanetNames;
     public SpecialStar[] specialStars;
     private bool Quasar;
     private void Start()
@@ -120,16 +114,12 @@ public class PlanetCreator : MonoBehaviour
     public void RunGenerate()
     {
         Explore = false;
-        Debug.Log(seed);
         GenerateSystem(seed);
     }
     public void RunExplore()
     {
         Explore = true;
-        Debug.Log(seed);
-
         GenerateSystem(seed);
-
     }
 
     private void Update()
@@ -155,6 +145,7 @@ public class PlanetCreator : MonoBehaviour
         //==============================================================
         //Initialize Generator
         //==============================================================
+
         #region Initialize Generator
         if (!abletoGenerate) return;
         abletoGenerate = false;
@@ -177,6 +168,7 @@ public class PlanetCreator : MonoBehaviour
             res = GenerateSeed();
             seed = string.Join("", res);
         }
+
         #region Generate Custom Star Variables
         for (int i = 0; i < specialStars.Length; i++)
             {
@@ -190,6 +182,7 @@ public class PlanetCreator : MonoBehaviour
                 }
             }
         #endregion
+
         //Generate a subseed with the mainseed, if the main seed has already been initialized then subseed will = seed. otherwise subseed will generate a new seed in proper form, from the old one
         SeedDigits = GenerateSeed(seed);
         subSeed = string.Join("", SeedDigits);
@@ -202,6 +195,7 @@ public class PlanetCreator : MonoBehaviour
         //==============================================================
         //Generate Quasars
         //==============================================================
+
         #region Generate Quasars
         int r = RandGen.Next(0, 100);//Roll a 100 sided dice
 
@@ -223,10 +217,8 @@ public class PlanetCreator : MonoBehaviour
         #endregion
 
         //Start Generation Process
-        generateStar(StarScale, StarColor.Evaluate((float)(SeedDigits[9] * 10 + SeedDigits[10]) / 100), SP);
+        GenerateStar(StarScale, StarColor.Evaluate((float)(SeedDigits[9] * 10 + SeedDigits[10]) / 100), SP);
     }
-
-
     #region Seed Generation and Filtration
     public int[] GenerateSeed()
     {
@@ -284,105 +276,97 @@ public class PlanetCreator : MonoBehaviour
 
 
     #endregion
-
-
-
-    public void generateStar(Vector3 _starSize, Color _starCol, SpecialStar _CustomStar)
+    public void GenerateStar(Vector3 _starSize, Color _starCol, SpecialStar _CustomStar)
     {
-
-        int starIndex = RandGen.Next(0, ConstelationList.Length);
-
+        //==============================================================
+        //Initialize Star Generator
+        //==============================================================
+        string starName;
+        Color _starTint = _starCol;
         if (_CustomStar != null)
         {
-            StarName = _CustomStar.name;
-            constellationNamefield.text = _CustomStar.constellationName;
-            descriptionField.text = _CustomStar.description;
+            if(_CustomStar.useCustomTint) _starTint = _CustomStar.customTint;
+
+            //If the star has a custom color, set the star color to that
             if (_CustomStar.useCustomStarColor)
             {
                 float ATemp = _starCol.a;
                 _starCol = _CustomStar.customStarColor;
                 _starCol.a = ATemp;
             }
-            for (int x = 0; x < ConstelationList.Length; x++)
-            {
-                if (ConstelationList[x].constelatioName == _CustomStar.constellationName)
-                {
-                    constelationImage.sprite = ConstelationList[x].ConstelationImage;
 
-                }
-            }
-
+            starName = _CustomStar.name; 
+            constellationNamefield.text = _CustomStar.constellationName; //Set UI element to custom Constelation name
+            descriptionField.text = _CustomStar.description; //Set UI element to custom description 
+            constelationImage.sprite = constellationList.Find((x) => x.constelatioName == _CustomStar.constellationName).ConstelationImage; //find the constelation that matches the custom star name, and grab the constelation image
 
         }
         else
         {
-
-            descriptionField.text = "";
-            StarName = greekLettes[RandGen.Next(0, ConstelationList[starIndex].starNum)] + " " + ConstelationList[starIndex].suffixName + "-" + ConvertB24(RandGen.Next(0, 24), 24) + RandGen.Next(0, 10000);
-            constellationNamefield.text = ConstelationList[starIndex].constelatioName;
-            constelationImage.sprite = ConstelationList[starIndex].ConstelationImage;
+            int starIndex = RandGen.Next(0, constellationList.Count); //get random star index
+            descriptionField.text = ""; //Reset descriptor field
+            starName = greekLettes[RandGen.Next(0, constellationList[starIndex].starNum)] + " " + constellationList[starIndex].suffixName + "-" + ConvertB24(RandGen.Next(0, 24), 24) + RandGen.Next(0, 10000); //Generate star name
+            constellationNamefield.text = constellationList[starIndex].constelatioName;
+            constelationImage.sprite = constellationList[starIndex].ConstelationImage;
         }
-        starNamefield.text = StarName;
+
+
+        starNamefield.text = starName;
         StopCoroutine("LerpStarColor");
         StopCoroutine("LerpStarSize");
-        StartCoroutine(LerpStarSize(star.transform.localScale, _starSize, starChangeTime));
-
-        StartCoroutine(LerpStarColor(CurrentStarColor, _starCol, starChangeTime));
+        StartCoroutine(LerpStarSize(_starSize, starChangeTime));
+        StartCoroutine(LerpStarColor(_starCol, _starTint, starChangeTime));
     }
-
-
-    public IEnumerator LerpStarSize(Vector3 _Start, Vector3 _End, float _Speed)
+    public IEnumerator LerpStarSize(Vector3 _End, float _Speed)
     {
+        //==============================================================
+        //Initialize Star Generator
+        //==============================================================
+        float stimer = 0;
+        Vector3 _Start = star.transform.localScale;
+        //Start delay
         yield return new WaitForSeconds(starChangeDelay);
 
-        float stimer = 0;
-        Vector3 current = _Start;
-        while (current != _End)
+        while (star.transform.localScale != _End)
         {
-
-            current = Vector3.Lerp(_Start, _End, stimer / _Speed);
-            star.transform.localScale = current;
+            star.transform.localScale = Vector3.Lerp(_Start, _End, stimer / _Speed);
             yield return 0;
             stimer += Time.deltaTime;
         }
         yield return new WaitForSeconds(starChangeDelay);
-
     }
-    public IEnumerator LerpStarColor(Color _Start, Color _End, float _Speed)
+    public IEnumerator LerpStarColor(Color _Color, Color _Tint, float _Speed)
     {
-        yield return new WaitForSeconds(starChangeDelay);
-        bool CustomTint = false;
-        Color CustomTintColor = Color.white;
-        for (int i = 0; i < specialStars.Length; i++)
-        {
-            if (seed == specialStars[i].designatedSeed && specialStars[i].useCustomTint == true)
-            {
-                CustomTint = true;
-                CustomTintColor = specialStars[i].customTint;
-            }
-        }
+        //==============================================================
+        //Initialize Star Generator
+        //==============================================================
+        Color _startColor = CurrentStarColor;
+        Color _startTint = CurrentStarTint;
         float stimer = 0;
         MeshRenderer[] m = star.GetComponentsInChildren<MeshRenderer>();
-        while (CurrentStarColor != _End)
-        {
 
-            CurrentStarColor = Color.Lerp(_Start, _End, stimer / _Speed);
-            for (int i = 0; i < m.Length; i++)
+        yield return new WaitForSeconds(starChangeDelay);
+            m[0].material.color = Color.white;
+        while (CurrentStarColor != _Color)
+        {
+            //==============================================================
+            //Color Lerp
+            CurrentStarTint = Color.Lerp(_startTint, _Tint, stimer / _Speed);
+            CurrentStarColor = Color.Lerp(_startColor, _Color, stimer / _Speed);
+            for (int i = 1; i < m.Length; i++)
             {
                 m[i].material.color = CurrentStarColor;
             }
-            m[0].material.color = Color.white;
-            Color c = Color.white;
-            c = CurrentStarColor;
-            c.a = 255;
+            //==============================================================
 
-            ColorParameter CP = new ColorParameter(c, true);
-            if (CustomTint)
-            {
-                CP = new ColorParameter(CustomTintColor, true);
-            }
-
+            //--------------------------------------------------------------
+            //Set Bloom
+            //--------------------------------------------------------------
+            CurrentStarTint.a = 255;
+            ColorParameter CP = new ColorParameter(CurrentStarTint, true);
             _bloom.tint.SetValue(CP);
+
+
             yield return 0;
             stimer += Time.deltaTime;
         }
@@ -391,15 +375,7 @@ public class PlanetCreator : MonoBehaviour
         GenerateTerraRings();
         GenerateGasRings();
         generateAsteroidBelt();
-        for (int i = 0; i < AllPlanets.Count; i++)
-        {
 
-            if (AllPlanets[i].gameObject.tag == "Planet")
-            {
-
-                AllPlanets[i].GetComponent<Gravity>().bodyName = StarName + "-" + ConvertB24(i + 1, 26);
-            }
-        }
         abletoGenerate = true;
     }
 
@@ -605,17 +581,6 @@ public class PlanetCreator : MonoBehaviour
             }
         }
     }
-
-
-
-
-
-   
-
-
-
-
-
 
     public void Generate(float _Volume, float _Distance, float _Mass, Vector2 _AxisTilt, float _OrbitalSpeed, GameObject _Prefab)
     {
