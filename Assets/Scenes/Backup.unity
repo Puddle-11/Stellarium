@@ -5519,6 +5519,7 @@ MonoBehaviour:
   starSize: 0.75
   minStarSize: 1
   minBlackHoleSize: 4
+  Quasarfrequency: 4
   starChangeTime: 0.6
   starChangeDelay: 0.2
   terraPlanetSize: {x: 1.5, y: 2.75}
@@ -5623,13 +5624,13 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  ConstelationList:
+  constellationList:
   - constelatioName: Andromeda
-    suffixName: Andromedaa
+    suffixName: Andromedae
     ConstelationImage: {fileID: 21300000, guid: fbcbcb60e5b36ce41b448579cbba9477,
       type: 3}
     starNum: 15
-  - constelatioName: Aqurius
+  - constelatioName: Aquarius
     suffixName: Aquarii
     ConstelationImage: {fileID: 21300000, guid: 433e294b2edc0924abbde1a0eac5aba6,
       type: 3}
@@ -5651,12 +5652,12 @@ MonoBehaviour:
     starNum: 6
   - constelatioName: Canis Minor
     suffixName: Canis Minoris
-    ConstelationImage: {fileID: 21300000, guid: 6e9379844762d8e489494a0f17fd611d,
+    ConstelationImage: {fileID: 21300000, guid: 7b295566b83b8a04e8b145fa6df7c712,
       type: 3}
     starNum: 2
   - constelatioName: Canis Major
     suffixName: Canis Majoris
-    ConstelationImage: {fileID: 21300000, guid: 7b295566b83b8a04e8b145fa6df7c712,
+    ConstelationImage: {fileID: 21300000, guid: 6e9379844762d8e489494a0f17fd611d,
       type: 3}
     starNum: 10
   - constelatioName: Capricorn
@@ -5769,6 +5770,16 @@ MonoBehaviour:
     ConstelationImage: {fileID: 21300000, guid: 6bcc1be760fd3854290237b63ff7999c,
       type: 3}
     starNum: 7
+  - constelatioName: Virgo
+    suffixName: Virginis
+    ConstelationImage: {fileID: 21300000, guid: 014820c68c03f7e40817585f677abc39,
+      type: 3}
+    starNum: 12
+  - constelatioName: Ursa Major
+    suffixName: Ursa Majoris
+    ConstelationImage: {fileID: 21300000, guid: 9efb0eb8214ab3f4293fd76c69bf58f2,
+      type: 3}
+    starNum: 7
   greekLettes:
   - Alpha
   - Beta
@@ -5850,7 +5861,7 @@ MonoBehaviour:
     binaryStar: {fileID: 8804692045172019004, guid: c7f8a92107ab19440b3ee1e1193ba222,
       type: 3}
     binaryStarTemp: 0.9
-    binaryStarSize: 1.5
+    binaryStarSize: 3
     binaryStarDistance: 50
     isQuasar: 0
     customTint: {r: 0, g: 0, b: 0, a: 0}
@@ -5898,6 +5909,19 @@ MonoBehaviour:
     useCustomStarColor: 0
   - designatedSeed: 911493389759
     name: Salph
+    description: 
+    constellationName: Orion
+    binaryStar: {fileID: 0}
+    binaryStarTemp: 0.9
+    binaryStarSize: 5
+    binaryStarDistance: 20
+    isQuasar: 0
+    customTint: {r: 0, g: 0, b: 0, a: 0}
+    useCustomTint: 0
+    customStarColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomStarColor: 0
+  - designatedSeed: 111111111111
+    name: test
     description: 
     constellationName: Orion
     binaryStar: {fileID: 0}
