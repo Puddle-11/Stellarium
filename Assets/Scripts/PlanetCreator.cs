@@ -118,11 +118,14 @@ public class PlanetCreator : MonoBehaviour
     public void RunGenerate()
     {
         Explore = false;
+        Debug.Log(seed);
         GenerateSystem(seed);
     }
     public void RunExplore()
     {
         Explore = true;
+        Debug.Log(seed);
+
         GenerateSystem(seed);
 
     }
@@ -140,42 +143,56 @@ public class PlanetCreator : MonoBehaviour
         //Digit 2: number of Rings Terestrial
         //Digit 3: number of Rings Gassious
         //Digit 4: Size of rings Range
-        //Digit 6: Distance of Between rings (this effects how big the asteroid belts are)
-        //Digit 7: density of asteroid belts
-        //Digit 8: star size;
-        //Digit 9-10: star Tempeture;
-        //Digit 11: terra-gas belt
+        //Digit: 
+        //Digit 5: Distance of Between rings (this effects how big the asteroid belts are)
+        //Digit 8: density of asteroid belts
+        //Digit 9: star size;
+        //Digit 10-11: star Tempeture;
+        //Digit 12: terra-gas belt
+        //==============================================================
+        //Initialize Generator
+        //==============================================================
+        #region Initialize Generator
         if (!abletoGenerate) return;
         abletoGenerate = false;
+        SpecialStar SP = null;
         for (int i = 0; i < AllPlanets.Count; i++)
         {
             Destroy(AllPlanets[i]);
         }
         AllPlanets = new List<GameObject>();
         RandGen = new System.Random(seed.GetHashCode());
+        #endregion
 
-
-        int r = RandGen.Next(0, 100);
-        if (r > 4) Quasar = false;
-        else Quasar = true;
-
-
-
-        for (int i = 0; i < specialStars.Length; i++)
+        //==============================================================
+        //Generate Custom Stars
+        //==============================================================
+        #region Generate Custom Star Variables
+        if (!Explore) // if e
         {
-            if (seed == specialStars[i].name.ToUpper() || seed == specialStars[i].designatedSeed)
+            for (int i = 0; i < specialStars.Length; i++)
             {
-                _seed = specialStars[i].designatedSeed;
-                seed = specialStars[i].designatedSeed;
-                subSeed = specialStars[i].designatedSeed;
-                Quasar = specialStars[i].isQuasar;
-                break;
+                if (seed == specialStars[i].name.ToUpper() || seed == specialStars[i].designatedSeed)
+                {
+                    seed = specialStars[i].designatedSeed;
+                    subSeed = specialStars[i].designatedSeed;
+                    Quasar = specialStars[i].isQuasar;
+                    SP = specialStars[i];
+                    break;
+                }
             }
         }
-
+        #endregion
 
         GenerateSeed();
 
+        //==============================================================
+        //Generate Quasars
+        //==============================================================
+        #region Generate Quasars
+        int r = RandGen.Next(0, 100);
+        if (r > 4) Quasar = false;
+        else Quasar = true;
         BlackHole.SetActive(Quasar);
         Vector3 StarScale = Vector3.zero;
         if (!Quasar)
@@ -185,11 +202,12 @@ public class PlanetCreator : MonoBehaviour
         else
         {
             BlackHole.transform.localScale = (Vector3.one * (FilteredSeed[8] * starSize + minBlackHoleSize)) / 2;
-             StarScale = new Vector3(FilteredSeed[8] * starSize + minBlackHoleSize, 0.2f, FilteredSeed[8] * starSize + minBlackHoleSize);
+            StarScale = new Vector3(FilteredSeed[8] * starSize + minBlackHoleSize, 0.2f, FilteredSeed[8] * starSize + minBlackHoleSize);
         }
-            generateStar(StarScale, StarColor.Evaluate((float)(FilteredSeed[9] * 10 + FilteredSeed[10]) / 100), null);
+        #endregion
 
-
+        //Start Generation Process
+        generateStar(StarScale, StarColor.Evaluate((float)(FilteredSeed[9] * 10 + FilteredSeed[10]) / 100), SP);
     }
 
 
@@ -252,35 +270,32 @@ public class PlanetCreator : MonoBehaviour
 
 
 
-    public void generateStar(Vector3 _starSize, Color _starCol, GameObject _CustomStar)
+    public void generateStar(Vector3 _starSize, Color _starCol, SpecialStar _CustomStar)
     {
         int starIndex = RandGen.Next(0, ConstelationList.Length);
         bool isspecial = false;
-        for (int i = 0; i < specialStars.Length; i++)
+        if (_CustomStar != null)
         {
-            if (subSeed == specialStars[i].designatedSeed)
+            StarName = _CustomStar.name;
+            constellationNamefield.text = _CustomStar.constellationName;
+            descriptionField.text = _CustomStar.description;
+            if (_CustomStar.useCustomStarColor)
             {
-                StarName = specialStars[i].name;
-                constellationNamefield.text = specialStars[i].constellationName;
-                descriptionField.text = specialStars[i].description;
-                if (specialStars[i].useCustomStarColor)
-                {
-                    float ATemp = _starCol.a;
-                    _starCol = specialStars[i].customStarColor;
-                    _starCol.a = ATemp;
-                }
-                for (int x = 0; x < ConstelationList.Length; x++)
-                {
-                    if (ConstelationList[x].constelatioName == specialStars[i].constellationName)
-                    {
-                        constelationImage.sprite = ConstelationList[x].ConstelationImage;
-
-                    }
-                }
-
-                isspecial = true;
-
+                float ATemp = _starCol.a;
+                _starCol = _CustomStar.customStarColor;
+                _starCol.a = ATemp;
             }
+            for (int x = 0; x < ConstelationList.Length; x++)
+            {
+                if (ConstelationList[x].constelatioName == _CustomStar.constellationName)
+                {
+                    constelationImage.sprite = ConstelationList[x].ConstelationImage;
+
+                }
+            }
+
+            isspecial = true;
+
         }
         if (isspecial == false)
         {
