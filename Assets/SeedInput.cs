@@ -69,7 +69,6 @@ public class SeedInput : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                 {
-                    Debug.Log("exited via Return");
 
                     ExitBox();
 

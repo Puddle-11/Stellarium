@@ -13,6 +13,7 @@ using UnityEngine.Rendering.Universal;
 using System.Runtime.CompilerServices;
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
+using NUnit.Framework;
 
 public class PlanetCreator : MonoBehaviour
 {
@@ -21,26 +22,34 @@ public class PlanetCreator : MonoBehaviour
     [Header("General")]
     [SerializeField] public string seed;
     public string subSeed;
-    [SerializeField] private TextMeshProUGUI SeedText;
     [SerializeField] private GameObject SystemObjectRef;
     [SerializeField] private Volume PostProfile;
     [SerializeField] private GameObject BasePlanet;
     [SerializeField] private GameObject BaseAsteroid;
     [SerializeField] private GameObject star;
+    [SerializeField] private GameObject BlackHole;
+    [SerializeField] private TextMeshProUGUI SeedText;
     [SerializeField] private TextMeshProUGUI starNamefield;
+    [SerializeField] private TextMeshProUGUI constellationNamefield;
+    [SerializeField] private TextMeshProUGUI descriptionField;
     [SerializeField] private UnityEngine.UI.Image constelationImage;
 
     [Space]
     [Space]
     [Header("Generation Parameters")]
     [SerializeField] private int minRingSize;
-    [SerializeField] private float DefaultMass;
-    [SerializeField] private float DefaultVolume;
+    [SerializeField] private float defaultMass;
+    [SerializeField] private float minMass;
+    [SerializeField] private float defaultVolume;
+    [SerializeField] private float minVolume;
+
     [Space]
     [Space]
     [Header("Star Parameters")]
     [SerializeField] private float starSize;
     [SerializeField] private float minStarSize;
+    [SerializeField] private float minBlackHoleSize;
+
     [SerializeField] private float starChangeTime;
     [SerializeField] private float starChangeDelay;
     [Space]
@@ -94,21 +103,22 @@ public class PlanetCreator : MonoBehaviour
     public Constelation[] ConstelationList;
     private bool abletoGenerate = true;
     public string[] greekLettes;
-    public string[] PlanetNames;
-
+    private string[] PlanetNames;
+    public SpecialStar[] specialStars;
+    private bool Quasar;
     private void Start()
     {
         PostProfile.profile.TryGet(out _bloom);
         SystemManagerRef = SystemObjectRef.GetComponent<SystemManager>();
         RunGenerate();
-        
+
     }
-  
-    
+
+
     public void RunGenerate()
     {
         Explore = false;
-            GenerateSystem(seed);
+        GenerateSystem(seed);
     }
     public void RunExplore()
     {
@@ -119,33 +129,84 @@ public class PlanetCreator : MonoBehaviour
 
     private void Update()
     {
+
         SeedText.text = seed;
     }
     public void GenerateSystem(string _seed)
     {
-        if (!abletoGenerate)
-        {
-            return;
-        }
+        //=============================================
+        //Digit 0: number of Terestrial planets (per ring)
+        //Digit 1: number of gasious planets (per ring)
+        //Digit 2: number of Rings Terestrial
+        //Digit 3: number of Rings Gassious
+        //Digit 4: Size of rings Range
+        //Digit 6: Distance of Between rings (this effects how big the asteroid belts are)
+        //Digit 7: density of asteroid belts
+        //Digit 8: star size;
+        //Digit 9-10: star Tempeture;
+        //Digit 11: terra-gas belt
+        if (!abletoGenerate) return;
         abletoGenerate = false;
-
-
-        RandGen = new System.Random(seed.GetHashCode());
-
         for (int i = 0; i < AllPlanets.Count; i++)
         {
             Destroy(AllPlanets[i]);
         }
         AllPlanets = new List<GameObject>();
-        //=============================================
-        //Get seed
-        //=============================================
+        RandGen = new System.Random(seed.GetHashCode());
+
+
+        int r = RandGen.Next(0, 100);
+        if (r > 4) Quasar = false;
+        else Quasar = true;
+
+
+
+        for (int i = 0; i < specialStars.Length; i++)
+        {
+            if (seed == specialStars[i].name.ToUpper() || seed == specialStars[i].designatedSeed)
+            {
+                _seed = specialStars[i].designatedSeed;
+                seed = specialStars[i].designatedSeed;
+                subSeed = specialStars[i].designatedSeed;
+                Quasar = specialStars[i].isQuasar;
+                break;
+            }
+        }
+
+
+        GenerateSeed();
+
+        BlackHole.SetActive(Quasar);
+        Vector3 StarScale = Vector3.zero;
+        if (!Quasar)
+        {
+            StarScale = Vector3.one * (FilteredSeed[8] * starSize + minStarSize);
+        }
+        else
+        {
+            BlackHole.transform.localScale = (Vector3.one * (FilteredSeed[8] * starSize + minBlackHoleSize)) / 2;
+             StarScale = new Vector3(FilteredSeed[8] * starSize + minBlackHoleSize, 0.2f, FilteredSeed[8] * starSize + minBlackHoleSize);
+        }
+            generateStar(StarScale, StarColor.Evaluate((float)(FilteredSeed[9] * 10 + FilteredSeed[10]) / 100), null);
+
+
+    }
+
+
+    #region Seed Generation and Filtration
+    public void GenerateSeed()
+    {
         subSeed = "";
         if (Explore)
         {
-
-            SeedDigits = GenerateSeed(12);
-           
+            seed = "";
+            int[] res = new int[12];
+            for (int i = 0; i < 12; i++)
+            {
+                res[i] = UnityEngine.Random.Range(1, 10);
+                seed += res[i].ToString();
+            }
+            SeedDigits = res;
         }
         else
         {
@@ -154,7 +215,7 @@ public class PlanetCreator : MonoBehaviour
             for (int x = 0; x < SeedDigits.Length; x++)
             {
                 int temp;
-                if (x < _seed.Length && int.TryParse(_seed[x].ToString(), out temp))
+                if (x < seed.Length && int.TryParse(seed[x].ToString(), out temp))
                 {
                     SeedDigits[x] = temp;
 
@@ -171,80 +232,84 @@ public class PlanetCreator : MonoBehaviour
             subSeed = subSeed + SeedDigits[i].ToString();
         }
         SeedText.text = subSeed;
-        string tempseed = "";
-        for (int i = 0; i < 5; i++)
-        {
-            tempseed = tempseed + SeedDigits[i].ToString();
-        }
-        int _seedint = int.Parse(tempseed);
-       if(seed == null || seed == string.Empty)
-        {
-            seed = subSeed;
-        }
-        //=============================================
-        //Digit 0: number of Terestrial planets (per ring)
-        //Digit 1: number of gasious planets (per ring)
-        //Digit 2: number of Rings Terestrial
-        //Digit 3: number of Rings Gassious
-        //Digit 4: Size of rings Range
-        //Digit 6: Distance of Between rings (this effects how big the asteroid belts are)
-        //Digit 7: density of asteroid belts
-        //Digit 8: star size;
-        //Digit 9-10: star Tempeture;
-        //Digit 11: terra-gas belt
 
+        if (seed == null || seed == string.Empty) seed = subSeed;
         FilteredSeed = new int[SeedDigits.Length];
-        FilteredSeed[0] = (int)Mathf.Round(Mathf.Clamp(SeedDigits[0] * terraPlanetDensity,1, 10));
+        FilteredSeed[0] = (int)Mathf.Round(Mathf.Clamp(SeedDigits[0] * terraPlanetDensity, 1, 10));
         FilteredSeed[1] = (int)Mathf.Round(Mathf.Clamp(SeedDigits[1] * gasPlanetDensity, 1, 10));
-        FilteredSeed[2] = (int)Mathf.Round( Mathf.Clamp(SeedDigits[2]/ terraRingClamp, 1, 10));
+        FilteredSeed[2] = (int)Mathf.Round(Mathf.Clamp(SeedDigits[2] / terraRingClamp, 1, 10));
         FilteredSeed[3] = (int)Mathf.Round(Mathf.Clamp(SeedDigits[3] / gasRingClamp, 1, 10));
         FilteredSeed[4] = SeedDigits[4] + minRingSize;
         FilteredSeed[5] = SeedDigits[5];
         FilteredSeed[6] = (int)Mathf.Clamp((SeedDigits[6] * asteroidBeltSize), asteroidBeltRange.x, asteroidBeltRange.y);
-        FilteredSeed[7] = SeedDigits[7];
         FilteredSeed[8] = SeedDigits[8];
+        FilteredSeed[7] = SeedDigits[7];
         FilteredSeed[9] = SeedDigits[9];
         FilteredSeed[10] = SeedDigits[10];
         FilteredSeed[11] = SeedDigits[11];
-
-
-      
-        generateStar(FilteredSeed[8], StarColor.Evaluate(   (float)(FilteredSeed[9] * 10 + FilteredSeed[10])/100));
-
-
-
     }
-    public void generateStar(float _starSize, Color _starCol)
+    #endregion
+
+
+
+    public void generateStar(Vector3 _starSize, Color _starCol, GameObject _CustomStar)
     {
-     
-        int starInex = RandGen.Next(0, ConstelationList.Length);
-        StarName = greekLettes[RandGen.Next(0, ConstelationList[starInex].starNum)] + " " + ConstelationList[starInex].suffixName + "-" + ConvertB24(RandGen.Next(0, 24), 24) + RandGen.Next(0, 10000);
-
-        starNamefield.text = StarName.ToUpper();
-        if (ConstelationList[starInex].ConstelationImage != null)
+        int starIndex = RandGen.Next(0, ConstelationList.Length);
+        bool isspecial = false;
+        for (int i = 0; i < specialStars.Length; i++)
         {
-            constelationImage.sprite = ConstelationList[starInex].ConstelationImage;
-        }
-        else
-        {
-            constelationImage.sprite = null;
+            if (subSeed == specialStars[i].designatedSeed)
+            {
+                StarName = specialStars[i].name;
+                constellationNamefield.text = specialStars[i].constellationName;
+                descriptionField.text = specialStars[i].description;
+                if (specialStars[i].useCustomStarColor)
+                {
+                    float ATemp = _starCol.a;
+                    _starCol = specialStars[i].customStarColor;
+                    _starCol.a = ATemp;
+                }
+                for (int x = 0; x < ConstelationList.Length; x++)
+                {
+                    if (ConstelationList[x].constelatioName == specialStars[i].constellationName)
+                    {
+                        constelationImage.sprite = ConstelationList[x].ConstelationImage;
 
+                    }
+                }
+
+                isspecial = true;
+
+            }
         }
+        if (isspecial == false)
+        {
+
+            descriptionField.text = "";
+            StarName = greekLettes[RandGen.Next(0, ConstelationList[starIndex].starNum)] + " " + ConstelationList[starIndex].suffixName + "-" + ConvertB24(RandGen.Next(0, 24), 24) + RandGen.Next(0, 10000);
+            constellationNamefield.text = ConstelationList[starIndex].constelatioName;
+            constelationImage.sprite = ConstelationList[starIndex].ConstelationImage;
+        }
+        starNamefield.text = StarName;
         StopCoroutine("LerpStarColor");
         StopCoroutine("LerpStarSize");
-        StartCoroutine(LerpStarSize(star.transform.localScale.x, _starSize * starSize + minStarSize, starChangeTime));
+        StartCoroutine(LerpStarSize(star.transform.localScale, _starSize, starChangeTime));
+
         StartCoroutine(LerpStarColor(CurrentStarColor, _starCol, starChangeTime));
     }
-    public IEnumerator LerpStarSize(float _Start, float _End, float _Speed)
+
+
+    public IEnumerator LerpStarSize(Vector3 _Start, Vector3 _End, float _Speed)
     {
         yield return new WaitForSeconds(starChangeDelay);
+
         float stimer = 0;
-        float current = _Start;
+        Vector3 current = _Start;
         while (current != _End)
         {
 
-            current = Mathf.Lerp(_Start, _End, stimer / _Speed);
-            star.transform.localScale = new Vector3(current, current, current);
+            current = Vector3.Lerp(_Start, _End, stimer / _Speed);
+            star.transform.localScale = current;
             yield return 0;
             stimer += Time.deltaTime;
         }
@@ -254,7 +319,16 @@ public class PlanetCreator : MonoBehaviour
     public IEnumerator LerpStarColor(Color _Start, Color _End, float _Speed)
     {
         yield return new WaitForSeconds(starChangeDelay);
-
+        bool CustomTint = false;
+        Color CustomTintColor = Color.white;
+        for (int i = 0; i < specialStars.Length; i++)
+        {
+            if (seed == specialStars[i].designatedSeed && specialStars[i].useCustomTint == true)
+            {
+                CustomTint = true;
+                CustomTintColor = specialStars[i].customTint;
+            }
+        }
         float stimer = 0;
         MeshRenderer[] m = star.GetComponentsInChildren<MeshRenderer>();
         while (CurrentStarColor != _End)
@@ -271,6 +345,11 @@ public class PlanetCreator : MonoBehaviour
             c.a = 255;
 
             ColorParameter CP = new ColorParameter(c, true);
+            if (CustomTint)
+            {
+                CP = new ColorParameter(CustomTintColor, true);
+            }
+
             _bloom.tint.SetValue(CP);
             yield return 0;
             stimer += Time.deltaTime;
@@ -282,11 +361,11 @@ public class PlanetCreator : MonoBehaviour
         generateAsteroidBelt();
         for (int i = 0; i < AllPlanets.Count; i++)
         {
-           
-            if(AllPlanets[i].gameObject.tag == "Planet")
+
+            if (AllPlanets[i].gameObject.tag == "Planet")
             {
 
-              AllPlanets[i].GetComponent<Gravity>().bodyName = StarName + "-" + ConvertB24(i + 1, 26);
+                AllPlanets[i].GetComponent<Gravity>().bodyName = StarName + "-" + ConvertB24(i + 1, 26);
             }
         }
         abletoGenerate = true;
@@ -330,20 +409,53 @@ public class PlanetCreator : MonoBehaviour
 
     public void GenerateTerraRings()
     {
+        float _startDist = 0;
+        if (Quasar)
+        {
+            _startDist = startDistance * 1.5f;
+        }
+        else
+        {
+            _startDist = startDistance;
+        }
+        for (int i = 0; i < specialStars.Length; i++)
+        {
+            if (subSeed == specialStars[i].designatedSeed && specialStars[i].binaryStar != null)
+            {
+                Generate(specialStars[i].binaryStarSize, specialStars[i].binaryStarDistance, defaultMass, Vector2.zero, 1, specialStars[i].binaryStar);
+
+                _startDist = (_startDist + 15);
+                for (int x = 0; x < AllPlanets.Count; x++)
+                {
+                    if (AllPlanets[x].tag == "Binary Star")
+                    {
+                        MeshRenderer[] m = AllPlanets[x].GetComponentsInChildren<MeshRenderer>();
+                        for (int y = 1; y < m.Length; y++)
+                        {
+
+                            m[y].material.color = StarColor.Evaluate(specialStars[i].binaryStarTemp);
+                        }
+                        break;
+                    }
+                }
+                break;
+            }
+        }
         TerraRings = new Vector2[FilteredSeed[2]];
         for (int i = 0; i < TerraRings.Length; i++)
         {
             if (i == 0)
             {
+
                 int Size = RandGen.Next(minRingSize, FilteredSeed[4]);
-                TerraRings[i].x = startDistance + FilteredSeed[8];
-                TerraRings[i].y = startDistance + FilteredSeed[8] + Size;
+                TerraRings[i].x = _startDist + FilteredSeed[8];
+                TerraRings[i].y = _startDist + FilteredSeed[8] + Size;
             }
             else
             {
                 int Size = RandGen.Next(minRingSize, FilteredSeed[4]);
 
-                TerraRings[i].x = TerraRings[i-1].y + FilteredSeed[6];
+                TerraRings[i].x = TerraRings[i - 1].y + FilteredSeed[6];
                 TerraRings[i].y = TerraRings[i - 1].y + FilteredSeed[6] + Size;
 
             }
@@ -357,7 +469,7 @@ public class PlanetCreator : MonoBehaviour
         {
             if (i == 0)
             {
-                GasRings[i].x = TerraRings[TerraRings.Length - 1].y + FilteredSeed[6]*2;
+                GasRings[i].x = TerraRings[TerraRings.Length - 1].y + FilteredSeed[6] * 2;
                 GasRings[i].y = TerraRings[TerraRings.Length - 1].y + FilteredSeed[6] * 2 + RandGen.Next(minRingSize, FilteredSeed[4]);
             }
             else
@@ -368,20 +480,24 @@ public class PlanetCreator : MonoBehaviour
         }
         InstantiateRings(GasRings, FilteredSeed[1], gasPlanetSize, BasePlanet);
     }
-    public void InstantiateRings(Vector2[] _rings,int _quantity,Vector2 _size, GameObject _prefab)
+    public void InstantiateRings(Vector2[] _rings, int _quantity, Vector2 _size, GameObject _prefab)
     {
         for (int x = 0; x < _rings.Length; x++)
         {
             for (int y = 0; y < _quantity; y++)
             {
-                Generate(UnityEngine.Random.Range(_size.x, _size.y), UnityEngine.Random.Range(_rings[x].x, _rings[x].y), DefaultMass, Vector2.zero, 1, _prefab);
+                Generate(UnityEngine.Random.Range(_size.x, _size.y), UnityEngine.Random.Range(_rings[x].x, _rings[x].y), defaultMass, Vector2.zero, 1, _prefab);
             }
         }
+    }
+    public void InstantiateBinaryStar(float _dist, int _quantity, float _size, GameObject _prefab)
+    {
+        Generate(_size, _dist, defaultMass, Vector2.zero, 1, _prefab);
     }
     public void generateAsteroidBelt()
     {
 
-        if(FilteredSeed[11] < 2)
+        if (FilteredSeed[11] < 2)
         {
             return;
         }
@@ -397,7 +513,7 @@ public class PlanetCreator : MonoBehaviour
         int numberofTerraBelts = 0;
         for (int i = 0; i < AsteroidBelts.Length; i++)
         {
-                int ib = i - numberofTerraBelts;
+            int ib = i - numberofTerraBelts;
             if (i < TerraRings.Length - 1)
             {
                 numberofTerraBelts++;
@@ -412,7 +528,7 @@ public class PlanetCreator : MonoBehaviour
                 AsteroidBelts[i].y = GasRings[ib + 1].x;
 
             }
-            else 
+            else
             {
                 if (FilteredSeed[11] > 5)
                 {
@@ -426,8 +542,8 @@ public class PlanetCreator : MonoBehaviour
         }
         for (int b = 0; b < AsteroidBelts.Length; b++)
         {
-                float meanDist = (AsteroidBelts[b].x + AsteroidBelts[b].y) / 2;
-                    float factor = Mathf.Abs(meanDist - AsteroidBelts[b].y);
+            float meanDist = (AsteroidBelts[b].x + AsteroidBelts[b].y) / 2;
+            float factor = Mathf.Abs(meanDist - AsteroidBelts[b].y);
             for (int d = 0; d < FilteredSeed[7]; d++)
             {
                 if (b == AsteroidBelts.Length - 1)
@@ -438,7 +554,7 @@ public class PlanetCreator : MonoBehaviour
                         float rand = UnityEngine.Random.Range(0, factor) * asteriodFalloff;
                         if (rand > Mathf.Abs(meanDist - dist))
                         {
-                            Generate(UnityEngine.Random.Range(asteroidSize.x, asteroidSize.y), dist, DefaultMass, Vector2.zero, 1, BaseAsteroid);
+                            Generate(UnityEngine.Random.Range(asteroidSize.x, asteroidSize.y), dist, defaultMass, Vector2.zero, 1, BaseAsteroid);
                         }
                     }
                 }
@@ -450,7 +566,7 @@ public class PlanetCreator : MonoBehaviour
                         float rand = UnityEngine.Random.Range(0, factor) * asteriodFalloff;
                         if (rand > Mathf.Abs(meanDist - dist))
                         {
-                            Generate(UnityEngine.Random.Range(asteroidSize.x, asteroidSize.y), dist, DefaultMass, Vector2.zero, 1, BaseAsteroid);
+                            Generate(UnityEngine.Random.Range(asteroidSize.x, asteroidSize.y), dist, defaultMass, Vector2.zero, 1, BaseAsteroid);
                         }
                     }
                 }
@@ -458,22 +574,12 @@ public class PlanetCreator : MonoBehaviour
         }
     }
 
-  
 
 
-    
-    public int[] GenerateSeed(int Size)
-    {
-        seed = "";
-        int[] res = new int[Size];
-        for (int i = 0; i < Size; i++)
-        {
-            res[i] = UnityEngine.Random.Range(1, 10);
-            seed += res[i].ToString();
-        }
-        return res;
-    }
+
+
    
+
 
 
 
@@ -482,60 +588,40 @@ public class PlanetCreator : MonoBehaviour
     public void Generate(float _Volume, float _Distance, float _Mass, Vector2 _AxisTilt, float _OrbitalSpeed, GameObject _Prefab)
     {
         float angle = RandGen.Next(0, 360) / (Mathf.PI / 180);
-        Vector3 SpawnPos = new Vector3(Mathf.Cos(angle), Mathf.Cos(angle) * _AxisTilt.x, Mathf.Sin(angle)).normalized;
-        SpawnPos = SpawnPos * _Distance;
-
-   
-                GameObject x = Instantiate(_Prefab, SpawnPos, Quaternion.identity, SystemObjectRef.transform);
-        AllPlanets.Add(x);
-                if (_Mass == 0)
-                {
-                    x.GetComponent<Rigidbody>().mass = DefaultMass;
-                }
-                else
-                {
-                    x.GetComponent<Rigidbody>().mass = _Mass;
-                }
-
-
-                if (_Volume == 0)
-                {
-                    float Volume = DefaultVolume;
-                    x.transform.localScale = new Vector3(Volume, Volume, Volume);
-
-                }
-                else
-                {
-                    x.transform.localScale = new Vector3(_Volume, _Volume, _Volume);
-
-                }
-                Gravity XGravRef = x.GetComponent<Gravity>();
-
-                Vector3 Axis = Vector3.zero;
-                    Axis = Vector3.Normalize(new Vector3(0, _AxisTilt.x, 1));
-
-                
-
-
-
-                XGravRef.StartVelocityType = Gravity.StartVelType.Auto;
-              
-        if(_Prefab == BasePlanet)
-            x.GetComponent<PlanetLighting>().BaseColor = PlanetColors.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
-        else
-            x.GetComponent<PlanetLighting>().BaseColor = AsteroidColor.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
-
-        x.GetComponent<PlanetLighting>().Star = star;
-
-
-
-        Vector3 ProductVector = (x.transform.position - star.transform.position).normalized;
-        ProductVector = new Vector3(-ProductVector.z, -ProductVector.z * _AxisTilt.x, ProductVector.x).normalized;
-
-
-
+        Vector3 SpawnPos = new Vector3(Mathf.Cos(angle), Mathf.Cos(angle) * _AxisTilt.x, Mathf.Sin(angle)).normalized * _Distance;
+        GameObject _Instance = Instantiate(_Prefab, SpawnPos, Quaternion.identity, SystemObjectRef.transform);
+        AllPlanets.Add(_Instance);
+        //==============================================================
+        //Set Mass
+        //==============================================================
+        _Mass = Mathf.Clamp(_Mass, minMass, Mathf.Infinity);
+        _Instance.GetComponent<Rigidbody>().mass = _Mass;
+        //==============================================================
+        //Set Volume
+        //==============================================================
+        _Volume = Mathf.Clamp(_Volume, minVolume, Mathf.Infinity);
+        _Instance.transform.localScale = new Vector3(_Volume, _Volume, _Volume);
+        //==============================================================
+        //Set Color and Star Reference
+        //==============================================================
+        PlanetLighting pltemp;
+        if (_Instance.TryGetComponent<PlanetLighting>(out pltemp))
+        {
+            pltemp.Star = star;
+            if (_Prefab == BasePlanet)
+                pltemp.BaseColor = PlanetColors.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
+            else if (_Prefab == BaseAsteroid)
+                pltemp.BaseColor = AsteroidColor.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
+        }
+        //==============================================================
+        //Set Start Velocity
+        //==============================================================
+        Gravity XGravRef = _Instance.GetComponent<Gravity>();
+        //--------------------------------------------------------------
+        Vector3 ParalellDir = (_Instance.transform.position - star.transform.position).normalized;
+        Vector3 ProductVector = new Vector3(-ParalellDir.z, -ParalellDir.z * _AxisTilt.x, ParalellDir.x).normalized;
+        //--------------------------------------------------------------
+        XGravRef.StartVelocityType = Gravity.StartVelType.Auto;
         XGravRef.StartVelocity = ProductVector;
     }
-  
-
 }
