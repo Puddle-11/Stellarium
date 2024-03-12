@@ -283,6 +283,10 @@ public class PlanetCreator : MonoBehaviour
         //==============================================================
         string starName;
         Color _starTint = _starCol;
+
+        //==============================================================
+        //Generate Star Variables
+        //==============================================================
         if (_CustomStar != null)
         {
             if(_CustomStar.useCustomTint) _starTint = _CustomStar.customTint;
@@ -312,42 +316,33 @@ public class PlanetCreator : MonoBehaviour
 
 
         starNamefield.text = starName;
-        StopCoroutine("LerpStarColor");
-        StopCoroutine("LerpStarSize");
-        StartCoroutine(LerpStarSize(_starSize, starChangeTime));
-        StartCoroutine(LerpStarColor(_starCol, _starTint, starChangeTime));
+
+        
+        StopCoroutine("LerpStar");
+        StartCoroutine(LerpStar(_starCol, _starTint, _starSize, starChangeTime));
     }
-    public IEnumerator LerpStarSize(Vector3 _End, float _Speed)
+    public IEnumerator LerpStar(Color _Color, Color _Tint,Vector3 _End, float _Speed)
     {
         //==============================================================
         //Initialize Star Generator
         //==============================================================
         float stimer = 0;
+        //Size Variables
         Vector3 _Start = star.transform.localScale;
-        //Start delay
-        yield return new WaitForSeconds(starChangeDelay);
-
-        while (star.transform.localScale != _End)
-        {
-            star.transform.localScale = Vector3.Lerp(_Start, _End, stimer / _Speed);
-            yield return 0;
-            stimer += Time.deltaTime;
-        }
-        yield return new WaitForSeconds(starChangeDelay);
-    }
-    public IEnumerator LerpStarColor(Color _Color, Color _Tint, float _Speed)
-    {
-        //==============================================================
-        //Initialize Star Generator
-        //==============================================================
+        //Color variables
         Color _startColor = CurrentStarColor;
         Color _startTint = CurrentStarTint;
-        float stimer = 0;
         MeshRenderer[] m = star.GetComponentsInChildren<MeshRenderer>();
+        //==============================================================
 
+
+        //==============================================================
+        //Delay Start
         yield return new WaitForSeconds(starChangeDelay);
-            m[0].material.color = Color.white;
-        while (CurrentStarColor != _Color)
+        m[0].material.color = Color.white;
+        //==============================================================
+
+        while (star.transform.localScale != _End)
         {
             //==============================================================
             //Color Lerp
@@ -357,21 +352,22 @@ public class PlanetCreator : MonoBehaviour
             {
                 m[i].material.color = CurrentStarColor;
             }
-            //==============================================================
-
             //--------------------------------------------------------------
             //Set Bloom
             //--------------------------------------------------------------
             CurrentStarTint.a = 255;
             ColorParameter CP = new ColorParameter(CurrentStarTint, true);
             _bloom.tint.SetValue(CP);
+            //==============================================================
 
-
+            //==============================================================
+            //Size Larp
+            star.transform.localScale = Vector3.Lerp(_Start, _End, stimer / _Speed);
+            //==============================================================
             yield return 0;
             stimer += Time.deltaTime;
         }
         yield return new WaitForSeconds(starChangeDelay);
-
         GenerateTerraRings();
         GenerateGasRings();
         generateAsteroidBelt();
@@ -379,6 +375,7 @@ public class PlanetCreator : MonoBehaviour
         abletoGenerate = true;
     }
 
+    #region Base Converter
     private string ConvertB24(long decimalNumber, int radix)
     {
         const int BitsInLong = 64;
@@ -412,7 +409,7 @@ public class PlanetCreator : MonoBehaviour
         }
         return result;
     }
-
+    #endregion
 
 
     public void GenerateTerraRings()
