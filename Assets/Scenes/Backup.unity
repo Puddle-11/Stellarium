@@ -242,7 +242,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 290, y: -290}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 66, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19413271
 MonoBehaviour:
@@ -293,7 +293,6 @@ GameObject:
   - component: {fileID: 23000878}
   - component: {fileID: 23000881}
   - component: {fileID: 23000880}
-  - component: {fileID: 23000879}
   m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
@@ -316,27 +315,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &23000879
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23000877}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &23000880
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -400,7 +378,6 @@ GameObject:
   - component: {fileID: 42667981}
   - component: {fileID: 42667984}
   - component: {fileID: 42667983}
-  - component: {fileID: 42667982}
   m_Layer: 10
   m_Name: Sphere (10)
   m_TagString: Untagged
@@ -423,27 +400,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 651130015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &42667982
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42667980}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &42667983
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -507,7 +463,6 @@ GameObject:
   - component: {fileID: 62361757}
   - component: {fileID: 62361760}
   - component: {fileID: 62361759}
-  - component: {fileID: 62361758}
   m_Layer: 10
   m_Name: Sphere (7)
   m_TagString: Untagged
@@ -530,27 +485,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &62361758
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62361756}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &62361759
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -890,7 +824,6 @@ GameObject:
   - component: {fileID: 146507945}
   - component: {fileID: 146507948}
   - component: {fileID: 146507947}
-  - component: {fileID: 146507946}
   m_Layer: 10
   m_Name: Sphere (19)
   m_TagString: Untagged
@@ -913,27 +846,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &146507946
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146507944}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &146507947
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -986,44 +898,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146507944}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &151042177
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 151042178}
-  m_Layer: 5
-  m_Name: Bookmark
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &151042178
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151042177}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.66, y: 0.66, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1916124521}
-  - {fileID: 1062630274}
-  - {fileID: 683456903}
-  m_Father: {fileID: 1811521958}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -333, y: 133}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &170585680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b0cfbcea27cc4a04eb3ee7f8a0797508, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be55bb768f39071468ab76da3f968896, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1237,81 +1111,6 @@ RectTransform:
   m_AnchoredPosition: {x: 280, y: -100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &197253594
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 197253595}
-  - component: {fileID: 197253597}
-  - component: {fileID: 197253596}
-  m_Layer: 5
-  m_Name: Edge 1 (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &197253595
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197253594}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.4, y: -0.4, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1062630274}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85, y: -85}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &197253596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197253594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7372549, b: 0.42745098, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1339c99ba80e5794b9ee65797c1ee6d0, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &197253597
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197253594}
-  m_CullTransparentMesh: 1
 --- !u!1 &281360472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,7 +1146,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 290, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 66, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281360474
 MonoBehaviour:
@@ -1491,7 +1290,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.018022435, g: 0.067385614, b: 0.084905684, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.043137256, b: 0.078431375, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1541,7 +1340,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16504757, y: 0, z: 0, w: 0.9862857}
-  m_LocalPosition: {x: 0, y: 29.4, z: -81.2}
+  m_LocalPosition: {x: 0, y: 60, z: -160}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1609,7 +1408,7 @@ MonoBehaviour:
   isControlable: 0
   target: {fileID: 1048603208}
   distance: 200
-  Speed: 50
+  Speed: 10
   smoothTime: 6
   changeSpeed: 0
 --- !u!1 &346505280
@@ -1729,8 +1528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1266.8, y: 194.82}
+  m_AnchoredPosition: {x: 3, y: 0}
+  m_SizeDelta: {x: 194.82, y: 194.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &365164631
 GameObject:
@@ -1767,7 +1566,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -290, y: 290}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 66, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365164633
 MonoBehaviour:
@@ -1981,7 +1780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -133, y: 133}
+  m_AnchoredPosition: {x: -216, y: 133}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405437974
@@ -2511,6 +2310,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &666161055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 666161056}
+  - component: {fileID: 666161058}
+  - component: {fileID: 666161057}
+  m_Layer: 5
+  m_Name: Border
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &666161056
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666161055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1811521958}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0058975, y: -0.00069714}
+  m_SizeDelta: {x: 3501.4, y: 2188.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &666161057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666161055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2c622197f29c30d4dbc6c8ba51210fed, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &666161058
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666161055}
+  m_CullTransparentMesh: 1
 --- !u!1 &668718749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,7 +2396,6 @@ GameObject:
   - component: {fileID: 668718750}
   - component: {fileID: 668718753}
   - component: {fileID: 668718752}
-  - component: {fileID: 668718751}
   m_Layer: 10
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -2545,27 +2418,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &668718751
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668718749}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &668718752
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2618,81 +2470,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668718749}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &683456902
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 683456903}
-  - component: {fileID: 683456905}
-  - component: {fileID: 683456904}
-  m_Layer: 5
-  m_Name: Icon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &683456903
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683456902}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 151042178}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 300}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &683456904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683456902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7372549, b: 0.42745098, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be55bb768f39071468ab76da3f968896, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &683456905
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683456902}
-  m_CullTransparentMesh: 1
 --- !u!1 &705354018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,7 +2481,6 @@ GameObject:
   - component: {fileID: 705354019}
   - component: {fileID: 705354022}
   - component: {fileID: 705354021}
-  - component: {fileID: 705354020}
   m_Layer: 10
   m_Name: Sphere (21)
   m_TagString: Untagged
@@ -2727,27 +2503,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &705354020
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705354018}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &705354021
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2886,7 +2641,6 @@ GameObject:
   - component: {fileID: 780712363}
   - component: {fileID: 780712366}
   - component: {fileID: 780712365}
-  - component: {fileID: 780712364}
   m_Layer: 10
   m_Name: Sphere (6)
   m_TagString: Untagged
@@ -2909,27 +2663,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &780712364
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780712362}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &780712365
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2993,7 +2726,6 @@ GameObject:
   - component: {fileID: 798664191}
   - component: {fileID: 798664194}
   - component: {fileID: 798664193}
-  - component: {fileID: 798664192}
   m_Layer: 10
   m_Name: Sphere (14)
   m_TagString: Untagged
@@ -3016,27 +2748,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &798664192
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798664190}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &798664193
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3100,7 +2811,6 @@ GameObject:
   - component: {fileID: 805074088}
   - component: {fileID: 805074091}
   - component: {fileID: 805074090}
-  - component: {fileID: 805074089}
   m_Layer: 10
   m_Name: Sphere (16)
   m_TagString: Untagged
@@ -3123,27 +2833,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &805074089
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805074087}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &805074090
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3246,7 +2935,6 @@ GameObject:
   - component: {fileID: 870990027}
   - component: {fileID: 870990030}
   - component: {fileID: 870990029}
-  - component: {fileID: 870990028}
   m_Layer: 10
   m_Name: Sphere (12)
   m_TagString: Untagged
@@ -3269,27 +2957,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &870990028
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870990026}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &870990029
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3377,7 +3044,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 290, y: 290}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 66, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875616567
 MonoBehaviour:
@@ -3453,7 +3120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 133, y: 133}
+  m_AnchoredPosition: {x: 216, y: 133}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &877101809
@@ -3493,7 +3160,6 @@ GameObject:
   - component: {fileID: 877663246}
   - component: {fileID: 877663249}
   - component: {fileID: 877663248}
-  - component: {fileID: 877663247}
   m_Layer: 10
   m_Name: 3rd circle
   m_TagString: Untagged
@@ -3516,27 +3182,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1660545673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &877663247
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877663245}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &877663248
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3916,8 +3561,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3954,7 +3599,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -109.3147, z: -681.4304, w: -966.86475}
+  m_margin: {x: -189.76154, y: -109.3147, z: -366.30347, w: -1206.1824}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3979,7 +3624,6 @@ GameObject:
   - component: {fileID: 969752349}
   - component: {fileID: 969752352}
   - component: {fileID: 969752351}
-  - component: {fileID: 969752350}
   m_Layer: 10
   m_Name: Sphere (17)
   m_TagString: Untagged
@@ -4002,27 +3646,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &969752350
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969752348}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &969752351
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4185,7 +3808,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -290, y: 50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 66, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &972207139
 MonoBehaviour:
@@ -4224,81 +3847,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972207137}
-  m_CullTransparentMesh: 1
---- !u!1 &979137049
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 979137050}
-  - component: {fileID: 979137052}
-  - component: {fileID: 979137051}
-  m_Layer: 5
-  m_Name: Edge 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &979137050
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979137049}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1062630274}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: 85}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &979137051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979137049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7372549, b: 0.42745098, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1339c99ba80e5794b9ee65797c1ee6d0, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &979137052
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979137049}
   m_CullTransparentMesh: 1
 --- !u!1 &1005655726
 GameObject:
@@ -4601,7 +4149,6 @@ GameObject:
   - component: {fileID: 1053995804}
   - component: {fileID: 1053995807}
   - component: {fileID: 1053995806}
-  - component: {fileID: 1053995805}
   m_Layer: 10
   m_Name: Sphere (4)
   m_TagString: Untagged
@@ -4624,27 +4171,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1053995805
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053995803}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1053995806
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4697,45 +4223,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053995803}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1062630273
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1062630274}
-  m_Layer: 5
-  m_Name: Edges
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1062630274
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062630273}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 979137050}
-  - {fileID: 2002879995}
-  - {fileID: 1737836389}
-  - {fileID: 197253595}
-  m_Father: {fileID: 151042178}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1084276498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5081,7 +4568,6 @@ GameObject:
   - component: {fileID: 1165110618}
   - component: {fileID: 1165110621}
   - component: {fileID: 1165110620}
-  - component: {fileID: 1165110619}
   m_Layer: 10
   m_Name: Sphere (18)
   m_TagString: Untagged
@@ -5104,27 +4590,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1165110619
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165110617}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1165110620
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5496,7 +4961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837cac52d2e25984d815b45566c811ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 679358199513
+  seed: 579437998439
   subSeed: 
   SystemObjectRef: {fileID: 1048603206}
   PostProfile: {fileID: 598949420}
@@ -5516,10 +4981,17 @@ MonoBehaviour:
   minMass: 0.01
   defaultVolume: 1
   minVolume: 0
+  defaultDarkColor: {r: 0, g: 0.09019608, b: 0.101960786, a: 1}
+  binaryStarFrequency: 20
+  binaryStarPrefab: {fileID: 8804692045172019004, guid: c7f8a92107ab19440b3ee1e1193ba222,
+    type: 3}
+  binaryStarDistance: {x: 40, y: 70}
+  binaryStarSize: {x: 1, y: 5}
+  binaryStarMass: 0
   starSize: 0.75
   minStarSize: 1
   minBlackHoleSize: 4
-  Quasarfrequency: 4
+  Quasarfrequency: 10
   starChangeTime: 0.6
   starChangeDelay: 0.2
   terraPlanetSize: {x: 1.5, y: 2.75}
@@ -5652,12 +5124,12 @@ MonoBehaviour:
     starNum: 6
   - constelatioName: Canis Minor
     suffixName: Canis Minoris
-    ConstelationImage: {fileID: 21300000, guid: 7b295566b83b8a04e8b145fa6df7c712,
+    ConstelationImage: {fileID: 21300000, guid: 6e9379844762d8e489494a0f17fd611d,
       type: 3}
     starNum: 2
   - constelatioName: Canis Major
     suffixName: Canis Majoris
-    ConstelationImage: {fileID: 21300000, guid: 6e9379844762d8e489494a0f17fd611d,
+    ConstelationImage: {fileID: 21300000, guid: 7b295566b83b8a04e8b145fa6df7c712,
       type: 3}
     starNum: 10
   - constelatioName: Capricorn
@@ -5807,8 +5279,8 @@ MonoBehaviour:
   - Omega
   - Proxima
   specialStars:
-  - designatedSeed: 679358199513
-    name: Polaris
+  - name: Polaris
+    designatedSeed: 679358199513
     description: 'Polaris is the brightest star in the constellation Ursa Minor.
       it is a yellow supergiant with 2 asteroid belts. the majority of the Polaris
       system is uninhabitable, the closest terrestrial planets are too hot while
@@ -5826,51 +5298,332 @@ MonoBehaviour:
     useCustomTint: 0
     customStarColor: {r: 0, g: 0, b: 0, a: 0}
     useCustomStarColor: 0
-  - designatedSeed: 422191768447
-    name: Sirius
-    description: 
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 0
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 0
+    customDarkColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomDarkColor: 0
+  - name: Sirius
+    designatedSeed: 422191768447
+    description: Sirius is a binary star system in the constellation Canis Major,
+      consisting of 2 stars, Sirius-a and Sirius-b,  Sirius-a is the brighter of
+      the two, while Sirius-b is near the end of its lifecycle, transitioning into
+      a red dwarf. Sirius-a-d is the fourth planet from Sirius-a and has a form of
+      intelligent life, and they worship Sirius-b as a god. Sirius-a-d effectively
+      has 3 light cycles. Instead of just day and night, Sirius-a-d has greater day,
+      lesser day, and the elusive night. This has led to some lifeforms having amazing
+      low light hunting abilities, however, most of the life forms on this planet
+      are only active during the greater day.
     constellationName: Canis Major
     binaryStar: {fileID: 8804692045172019004, guid: c7f8a92107ab19440b3ee1e1193ba222,
       type: 3}
     binaryStarTemp: 0.1
-    binaryStarSize: 4
+    binaryStarSize: 3
     binaryStarDistance: 50
     isQuasar: 0
     customTint: {r: 0, g: 0, b: 0, a: 0}
     useCustomTint: 0
     customStarColor: {r: 0, g: 0, b: 0, a: 0}
     useCustomStarColor: 0
-  - designatedSeed: 847243529557
-    name: Procyon
-    description: 
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 0
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 0
+    customDarkColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomDarkColor: 0
+  - name: Procyon
+    designatedSeed: 847243529557
+    description: Procyon is a binary star in the constellation Canis Minor. Procyon-a
+      is a yellow giant, while Procyon-b is a white dwarf. despite the size difference,
+      Procyon-b is significantly more bright. because of the intense heat caused
+      by the proximity of the stars, the planets in this system have no signs of
+      life. Some of the planets' surfaces can reach over 3,000 degrees Fahrenheit.
+      because of the intense solar storms these planets experience, they have almost
+      no atmosphere. any life form inhabiting these planets would be blasted by solar
+      winds and radiation from the nearby stars.
     constellationName: Canis Minor
     binaryStar: {fileID: 8804692045172019004, guid: c7f8a92107ab19440b3ee1e1193ba222,
       type: 3}
     binaryStarTemp: 0.9
     binaryStarSize: 3
-    binaryStarDistance: 20
+    binaryStarDistance: 70
     isQuasar: 0
     customTint: {r: 1, g: 1, b: 1, a: 1}
     useCustomTint: 1
     customStarColor: {r: 0, g: 0, b: 0, a: 0}
     useCustomStarColor: 0
-  - designatedSeed: 139933279994
-    name: Gomeisa
-    description: 
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 0
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 0
+    customDarkColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomDarkColor: 0
+  - name: Gomeisa
+    designatedSeed: 139933279994
+    description: 'Gomeisa is a binary system in the constellation Canis Minor. Gomeisa-a
+      is a Blue Supergiant while Gomeisa-a is a Blue Dwarf.  Gomeisa-a has a plethora
+      of asteroid belts. with many dwarf planets residing in these belts. these planets
+      are covered in craters. with asteroid collisions being more frequent than lighting
+      in a storm, the topography is constantly changing. durring these planets winter.
+      Night-time temperatures can get as low as -1,000 degrees Fahrenheit. with summer
+      day temperatures exceeding 3,000 degrees fahrenheit. '
     constellationName: Canis Minor
     binaryStar: {fileID: 8804692045172019004, guid: c7f8a92107ab19440b3ee1e1193ba222,
       type: 3}
     binaryStarTemp: 0.9
     binaryStarSize: 3
-    binaryStarDistance: 50
+    binaryStarDistance: 70
     isQuasar: 0
     customTint: {r: 0, g: 0, b: 0, a: 0}
     useCustomTint: 0
     customStarColor: {r: 0, g: 0, b: 0, a: 0}
     useCustomStarColor: 0
-  - designatedSeed: 328141858002
-    name: Betelgeuse
-    description: 
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 0
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 0
+    customDarkColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomDarkColor: 0
+  - name: Betelgeuse
+    designatedSeed: 328141858002
+    description: Betelgeuse is a Green giant in the constellation Orion. Its green
+      color is unnatural and likely artificially induced by a type 2 or 3 civilization.
+      the planets have been rendered uninhabitable because of the lack of warmth
+      this star produces. burning at just 7,000 degrees Fahrenheit. it is expected
+      to go supernova and consume its solar system.
     constellationName: Orion
     binaryStar: {fileID: 0}
     binaryStarTemp: 0.9
@@ -5881,8 +5634,72 @@ MonoBehaviour:
     useCustomTint: 0
     customStarColor: {r: 0.41960785, g: 0.59607846, b: 0.25490198, a: 0}
     useCustomStarColor: 1
-  - designatedSeed: 467351819658
-    name: Bellatrix
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 0
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 0
+    customDarkColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomDarkColor: 0
+  - name: Bellatrix
+    designatedSeed: 467351819658
     description: 
     constellationName: Orion
     binaryStar: {fileID: 0}
@@ -5894,9 +5711,75 @@ MonoBehaviour:
     useCustomTint: 0
     customStarColor: {r: 0, g: 0, b: 0, a: 0}
     useCustomStarColor: 0
-  - designatedSeed: 939977599991
-    name: Rigel
-    description: 
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 0
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 0
+    customDarkColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomDarkColor: 0
+  - name: Rigel
+    designatedSeed: 939977599991
+    description: 'Rigel is a Blue Giant star in the constellation Orion, This star
+      has quite a few terrestrial planets. some of which have the capacity to develop
+      life, however, none have. '
     constellationName: Orion
     binaryStar: {fileID: 0}
     binaryStarTemp: 0.9
@@ -5907,32 +5790,233 @@ MonoBehaviour:
     useCustomTint: 0
     customStarColor: {r: 0, g: 0, b: 0, a: 0}
     useCustomStarColor: 0
-  - designatedSeed: 911493389759
-    name: Salph
-    description: 
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 0
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 0
+    customDarkColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomDarkColor: 0
+  - name: Salph
+    designatedSeed: 911493389759
+    description: Salph is a Quasar in the constellation Orion. Surprisingly this
+      Quasar has several planets that orbit it. these planets experience such a strong
+      gravitational pull that one day on one of these terrestrial planets equates
+      to several years on Earth. when looking into Salph, occasionally you can see
+      yourself looking back. life has developed on 2 of these planets. Salph-d and
+      Salph-h, However, these planets only display signs of single-celled life.
     constellationName: Orion
     binaryStar: {fileID: 0}
     binaryStarTemp: 0.9
     binaryStarSize: 5
     binaryStarDistance: 20
-    isQuasar: 0
+    isQuasar: 1
     customTint: {r: 0, g: 0, b: 0, a: 0}
     useCustomTint: 0
     customStarColor: {r: 0, g: 0, b: 0, a: 0}
     useCustomStarColor: 0
-  - designatedSeed: 111111111111
-    name: test
-    description: 
-    constellationName: Orion
-    binaryStar: {fileID: 0}
-    binaryStarTemp: 0.9
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 0
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 0
+    customDarkColor: {r: 0, g: 0, b: 0, a: 0}
+    useCustomDarkColor: 0
+  - name: Midas
+    designatedSeed: 009437497009
+    description: 'Midas is a planet in the constellation Capricorn. Every single
+      celestial body in this system is gold. because of how soft and malleable gold
+      is. the planets in this system have almost no mountains or valleys, excluding
+      craters. '
+    constellationName: Capricorn
+    binaryStar: {fileID: 8804692045172019004, guid: c7f8a92107ab19440b3ee1e1193ba222,
+      type: 3}
+    binaryStarTemp: 0.55
     binaryStarSize: 5
-    binaryStarDistance: 20
+    binaryStarDistance: 55
     isQuasar: 0
     customTint: {r: 0, g: 0, b: 0, a: 0}
     useCustomTint: 0
-    customStarColor: {r: 0, g: 0, b: 0, a: 0}
-    useCustomStarColor: 0
+    customStarColor: {r: 1, g: 0.7411765, b: 0.34509805, a: 0}
+    useCustomStarColor: 1
+    customPlanetColor:
+      serializedVersion: 2
+      key0: {r: 0.7647059, g: 0.5411765, b: 0.2, a: 1}
+      key1: {r: 0.8980392, g: 0.6627451, b: 0.30980393, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomPlanetColor: 1
+    customAsteroidColor:
+      serializedVersion: 2
+      key0: {r: 0.74509805, g: 0.5294118, b: 0.2, a: 1}
+      key1: {r: 0.36862746, g: 0.2509804, b: 0.12941177, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    useCustomAsteroidColor: 1
+    customDarkColor: {r: 0.047169805, g: 0.047169805, b: 0.047169805, a: 0}
+    useCustomDarkColor: 1
 --- !u!4 &1258060731
 Transform:
   m_ObjectHideFlags: 0
@@ -6129,7 +6213,7 @@ MonoBehaviour:
   TimeScale: 1
   DarkColor: {r: 0, g: 0.09019608, b: 0.101960786, a: 1}
   lightFalloff: 3
-  lightBrightness: 10000
+  lightBrightness: 20000
   lighting: 1
   slopeAngle: 0
 --- !u!4 &1480078191
@@ -6182,7 +6266,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -290, y: -290}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 66, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1483534937
 MonoBehaviour:
@@ -6318,7 +6402,6 @@ GameObject:
   - component: {fileID: 1503138061}
   - component: {fileID: 1503138064}
   - component: {fileID: 1503138063}
-  - component: {fileID: 1503138062}
   m_Layer: 10
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -6341,27 +6424,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 651130015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1503138062
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503138060}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1503138063
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6625,7 +6687,6 @@ GameObject:
   - component: {fileID: 1644815228}
   - component: {fileID: 1644815231}
   - component: {fileID: 1644815230}
-  - component: {fileID: 1644815229}
   m_Layer: 10
   m_Name: Sphere (9)
   m_TagString: Untagged
@@ -6648,27 +6709,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 651130015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1644815229
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1644815227}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1644815230
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6750,7 +6790,6 @@ GameObject:
   - component: {fileID: 1666422140}
   - component: {fileID: 1666422143}
   - component: {fileID: 1666422142}
-  - component: {fileID: 1666422141}
   m_Layer: 10
   m_Name: Sphere (23)
   m_TagString: Untagged
@@ -6773,27 +6812,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1666422141
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666422139}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1666422142
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6881,7 +6899,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -290, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 66, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733412675
 MonoBehaviour:
@@ -6920,81 +6938,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733412673}
-  m_CullTransparentMesh: 1
---- !u!1 &1737836388
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1737836389}
-  - component: {fileID: 1737836391}
-  - component: {fileID: 1737836390}
-  m_Layer: 5
-  m_Name: Edge 1 (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1737836389
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737836388}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1062630274}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85, y: 85}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1737836390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737836388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7372549, b: 0.42745098, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1339c99ba80e5794b9ee65797c1ee6d0, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1737836391
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737836388}
   m_CullTransparentMesh: 1
 --- !u!1 &1770994966
 GameObject:
@@ -7084,7 +7027,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.050980393, b: 0.08627451, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7178,7 +7121,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.876
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -7225,7 +7168,7 @@ RectTransform:
   - {fileID: 2047928797}
   - {fileID: 877101808}
   - {fileID: 405437973}
-  - {fileID: 151042178}
+  - {fileID: 666161056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7244,7 +7187,6 @@ GameObject:
   - component: {fileID: 1834778839}
   - component: {fileID: 1834778842}
   - component: {fileID: 1834778841}
-  - component: {fileID: 1834778840}
   m_Layer: 10
   m_Name: Sphere (8)
   m_TagString: Untagged
@@ -7267,27 +7209,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 651130015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1834778840
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834778838}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1834778841
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7414,126 +7335,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863897880}
-  m_CullTransparentMesh: 1
---- !u!1 &1916124520
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1916124521}
-  - component: {fileID: 1916124524}
-  - component: {fileID: 1916124523}
-  - component: {fileID: 1916124522}
-  m_Layer: 5
-  m_Name: Freecam Input Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1916124521
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916124520}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 151042178}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1916124522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916124520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1916124523}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1916124523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916124520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1916124524
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916124520}
   m_CullTransparentMesh: 1
 --- !u!1 &1943004121
 GameObject:
@@ -7696,7 +7497,6 @@ GameObject:
   - component: {fileID: 2000434042}
   - component: {fileID: 2000434045}
   - component: {fileID: 2000434044}
-  - component: {fileID: 2000434043}
   m_Layer: 10
   m_Name: Sphere (20)
   m_TagString: Untagged
@@ -7719,27 +7519,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2000434043
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000434041}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2000434044
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7792,81 +7571,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000434041}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2002879994
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2002879995}
-  - component: {fileID: 2002879997}
-  - component: {fileID: 2002879996}
-  m_Layer: 5
-  m_Name: Edge 1 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2002879995
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002879994}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: -0.4, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1062630274}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: -85}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2002879996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002879994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7372549, b: 0.42745098, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1339c99ba80e5794b9ee65797c1ee6d0, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2002879997
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002879994}
-  m_CullTransparentMesh: 1
 --- !u!1 &2026492968
 GameObject:
   m_ObjectHideFlags: 0
@@ -7902,7 +7606,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 290, y: 50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 66, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026492970
 MonoBehaviour:
@@ -7953,7 +7657,6 @@ GameObject:
   - component: {fileID: 2038861895}
   - component: {fileID: 2038861898}
   - component: {fileID: 2038861897}
-  - component: {fileID: 2038861896}
   m_Layer: 10
   m_Name: Sphere (22)
   m_TagString: Untagged
@@ -7976,27 +7679,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2038861896
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038861894}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2038861897
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8161,7 +7843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 333, y: 133}
+  m_AnchoredPosition: {x: 416, y: 133}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2047928798
@@ -8205,7 +7887,6 @@ GameObject:
   - component: {fileID: 2051816969}
   - component: {fileID: 2051816972}
   - component: {fileID: 2051816971}
-  - component: {fileID: 2051816970}
   m_Layer: 10
   m_Name: Sphere (11)
   m_TagString: Untagged
@@ -8228,27 +7909,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2051816970
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051816968}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2051816971
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8312,7 +7972,6 @@ GameObject:
   - component: {fileID: 2077640505}
   - component: {fileID: 2077640508}
   - component: {fileID: 2077640507}
-  - component: {fileID: 2077640506}
   m_Layer: 10
   m_Name: Sphere (15)
   m_TagString: Untagged
@@ -8335,27 +7994,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2077640506
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077640504}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2077640507
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8419,7 +8057,6 @@ GameObject:
   - component: {fileID: 2086003038}
   - component: {fileID: 2086003041}
   - component: {fileID: 2086003040}
-  - component: {fileID: 2086003039}
   m_Layer: 10
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -8442,27 +8079,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 651130015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2086003039
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086003037}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2086003040
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8601,7 +8217,6 @@ GameObject:
   - component: {fileID: 2139052751}
   - component: {fileID: 2139052754}
   - component: {fileID: 2139052753}
-  - component: {fileID: 2139052752}
   m_Layer: 10
   m_Name: Sphere (13)
   m_TagString: Untagged
@@ -8624,27 +8239,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8634859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2139052752
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139052750}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2139052753
 MeshRenderer:
   m_ObjectHideFlags: 0

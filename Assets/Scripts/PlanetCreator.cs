@@ -40,10 +40,21 @@ public class PlanetCreator : MonoBehaviour
     [SerializeField] private float minMass;
     [SerializeField] private float defaultVolume;
     [SerializeField] private float minVolume;
+    [SerializeField] private Color defaultDarkColor;
 
     [Space]
     [Space]
     [Header("Star Parameters")]
+    [UnityEngine.Range(0, 100)]
+    [SerializeField] private int binaryStarFrequency; //out of 100
+    [SerializeField] private GameObject binaryStarPrefab;
+    [SerializeField] private Vector2 binaryStarDistance;
+    [SerializeField] private Vector2 binaryStarSize;
+    [SerializeField] private float binaryStarMass;
+
+    [Space]
+    [Space]
+
     [SerializeField] private float starSize;
     [SerializeField] private float minStarSize;
     [SerializeField] private float minBlackHoleSize;
@@ -108,7 +119,6 @@ public class PlanetCreator : MonoBehaviour
         PostProfile.profile.TryGet(out _bloom);
         SystemManagerRef = SystemObjectRef.GetComponent<SystemManager>();
         RunGenerate();
-
     }
 
 
@@ -136,8 +146,11 @@ public class PlanetCreator : MonoBehaviour
         //Digit 2: number of Rings Terestrial
         //Digit 3: number of Rings Gassious
         //Digit 4: Size of rings Range
-        //Digit 5: Unused
-        //Digit 5: Distance of Between rings (this effects how big the asteroid belts are)
+        //Digit 5: binary star size
+        //Digit 6: Binary Star Mass
+        //Digit 7: Density of rings
+
+
         //Digit 8: density of asteroid belts
         //Digit 9: star size;
         //Digit 10-11: star Tempeture;
@@ -157,12 +170,14 @@ public class PlanetCreator : MonoBehaviour
         }
         AllPlanets = new List<GameObject>();
         RandGen = new System.Random(seed.GetHashCode());
+        int r = RandGen.Next(0, 100);//Roll a 100 sided dice
+        Quasar = r > Quasarfrequency ? false : true; //If the role was below the threshold, the current star will be a Quasara
         #endregion
 
         //==============================================================
         //Generate Custom Stars
         //==============================================================
-            int[] res = new int[12];
+        int[] res = new int[12];
         //if exploring set the main seed to random
         if (Explore)
         {
@@ -171,18 +186,20 @@ public class PlanetCreator : MonoBehaviour
         }
 
         #region Generate Custom Star Variables
-        
+        SimulationVariables.SimRef.DarkColor = defaultDarkColor;
         for (int i = 0; i < specialStars.Length; i++)
+        {
+            if (seed == specialStars[i].name.ToUpper() || seed == specialStars[i].designatedSeed)
             {
-                if (seed == specialStars[i].name.ToUpper() || seed == specialStars[i].designatedSeed)
-                {
-                    seed = specialStars[i].designatedSeed;
-                    subSeed = specialStars[i].designatedSeed;
-                    Quasar = specialStars[i].isQuasar;
-                    currentCustomStar = specialStars[i];
-                    break;
-                }
+                currentCustomStar = specialStars[i];
+                seed = currentCustomStar.designatedSeed;
+                subSeed = currentCustomStar.designatedSeed;
+                Quasar = currentCustomStar.isQuasar;
+                if (currentCustomStar.useCustomDarkColor) SimulationVariables.SimRef.DarkColor = currentCustomStar.customDarkColor;
+                break;
             }
+        }
+        
         #endregion
 
         //Generate a subseed with the mainseed, if the main seed has already been initialized then subseed will = seed. otherwise subseed will generate a new seed in proper form, from the old one
@@ -199,10 +216,9 @@ public class PlanetCreator : MonoBehaviour
         //==============================================================
 
         #region Generate Quasars
-        int r = RandGen.Next(0, 100);//Roll a 100 sided dice
+        
 
-        //If the role was below the threshold, the current star will be a Quasar
-        Quasar = r > Quasarfrequency ? false : true;
+
         BlackHole.SetActive(Quasar); //Set the black hole to be active or inactive depending on Quasar State
         Vector3 StarScale = Vector3.zero;
         if (!Quasar)
@@ -234,7 +250,19 @@ public class PlanetCreator : MonoBehaviour
         int[] res = new int[12];
         for (int x = 0; x < res.Length; x++)
         {
-            if (x < seed.Length) int.TryParse(seed[x].ToString(), out res[x]);
+            int Temp;
+            if (x < seed.Length)
+            {
+                int.TryParse(seed[x].ToString(), out Temp);
+                if(Temp == 0)
+                {
+                    res[x] = RandGen.Next(0, 10);
+                }
+                else
+                {
+                    res[x] = Temp;
+                }
+            }
             else res[x] = RandGen.Next(0, 10);
         }
         return res;
@@ -297,6 +325,7 @@ public class PlanetCreator : MonoBehaviour
                 float ATemp = _starCol.a;
                 _starCol = currentCustomStar.customStarColor;
                 _starCol.a = ATemp;
+                _starTint = _starCol;
             }
 
             starName = currentCustomStar.name; 
@@ -415,15 +444,17 @@ public class PlanetCreator : MonoBehaviour
         //==============================================================
         //Initialize Generator
         //==============================================================
-        //Check if binary star is true
-        if (currentCustomStar == null || currentCustomStar.binaryStar == null) return;
-        Generate(currentCustomStar.binaryStarSize, currentCustomStar.binaryStarDistance, defaultMass, Vector2.zero, 1, currentCustomStar.binaryStar);
+        int roll = RandGen.Next(0, 100);
+        //Check if custom star binary star is true
 
-        //==============================================================
-        //Set Binary Star Variables
-        //==============================================================
-        GameObject BinaryStar = AllPlanets.Find((x) => x.tag == "Binary Star");
-        if (BinaryStar != null)
+      
+        if (currentCustomStar != null && currentCustomStar.binaryStar != null)
+        {
+            Generate(currentCustomStar.binaryStarSize, currentCustomStar.binaryStarDistance, defaultMass, 0, 1, currentCustomStar.binaryStar, PlanetColors);
+
+            GameObject BinaryStar = AllPlanets.Find((x) => x.tag == "Binary Star");
+
+            if (BinaryStar != null)
         {
             MeshRenderer[] m = BinaryStar.GetComponentsInChildren<MeshRenderer>();
             for (int y = 1; y < m.Length; y++)
@@ -431,12 +462,33 @@ public class PlanetCreator : MonoBehaviour
                 m[y].material.color = StarColor.Evaluate(currentCustomStar.binaryStarTemp);
             }
         }
+        }
+        else if(roll < binaryStarFrequency)
+        {
+            Generate(RandGen.Next((int)binaryStarSize.x, (int)binaryStarSize.y), RandGen.Next((int)binaryStarDistance.x, (int)binaryStarDistance.y), defaultMass, 0, 1, binaryStarPrefab, PlanetColors);
+
+            GameObject BinaryStar = AllPlanets.Find((x) => x.tag == "Binary Star");
+
+            if (BinaryStar != null)
+            {
+
+                MeshRenderer[] m = BinaryStar.GetComponentsInChildren<MeshRenderer>();
+                for (int y = 1; y < m.Length; y++)
+                {
+                    m[y].material.color = StarColor.Evaluate((float)(SeedDigits[9] * 10 + SeedDigits[10]) / 100);
+                }
+            }
+        }
+     
+
+        //==============================================================
+        //Set Binary Star Variables
+        //==============================================================
         //==============================================================
     }
     public void GenerateTerraRings()
     {
         float _startDist = Quasar ? startDistance * 1.5f : startDistance; //ternary operator. if quasar then start distance is 50% more, otherwise its normal
-        if (currentCustomStar != null && currentCustomStar.binaryStar != null) _startDist += 15;//Increase start dist when there is a binar star
 
         //==============================================================
         //Generate Terra Rings
@@ -470,11 +522,13 @@ public class PlanetCreator : MonoBehaviour
     }
     public void InstantiateRings(Vector2[] _rings, int _quantity, Vector2 _size, GameObject _prefab)
     {
+        Gradient PlanetCol = currentCustomStar != null && currentCustomStar.useCustomPlanetColor ? currentCustomStar.customPlanetColor : PlanetColors;
         for (int x = 0; x < _rings.Length; x++)
         {
             for (int y = 0; y < _quantity; y++)
             {
-                Generate(UnityEngine.Random.Range(_size.x, _size.y), UnityEngine.Random.Range(_rings[x].x, _rings[x].y), defaultMass, Vector2.zero, 1, _prefab);
+                Generate(UnityEngine.Random.Range(_size.x, _size.y), UnityEngine.Random.Range(_rings[x].x, _rings[x].y), defaultMass, 0, 1, _prefab, PlanetCol);
+            
             }
         }
     }
@@ -529,6 +583,8 @@ public class PlanetCreator : MonoBehaviour
         {
             float meanDist = (AsteroidBelts[b].x + AsteroidBelts[b].y) / 2;
             float factor = Mathf.Abs(meanDist - AsteroidBelts[b].y);
+            Gradient AsteroidCol = currentCustomStar != null && currentCustomStar.useCustomAsteroidColor ? currentCustomStar.customAsteroidColor : AsteroidColor;
+
             for (int d = 0; d < SeedDigits[7]; d++)
             {
                 if (b == AsteroidBelts.Length - 1)
@@ -539,7 +595,10 @@ public class PlanetCreator : MonoBehaviour
                         float rand = UnityEngine.Random.Range(0, factor) * asteriodFalloff;
                         if (rand > Mathf.Abs(meanDist - dist))
                         {
-                            Generate(UnityEngine.Random.Range(asteroidSize.x, asteroidSize.y), dist, defaultMass, Vector2.zero, 1, BaseAsteroid);
+                         
+
+                            Generate(UnityEngine.Random.Range(asteroidSize.x, asteroidSize.y), dist, defaultMass, 0, 1, BaseAsteroid, AsteroidCol);
+                            
                         }
                     }
                 }
@@ -551,7 +610,7 @@ public class PlanetCreator : MonoBehaviour
                         float rand = UnityEngine.Random.Range(0, factor) * asteriodFalloff;
                         if (rand > Mathf.Abs(meanDist - dist))
                         {
-                            Generate(UnityEngine.Random.Range(asteroidSize.x, asteroidSize.y), dist, defaultMass, Vector2.zero, 1, BaseAsteroid);
+                            Generate(UnityEngine.Random.Range(asteroidSize.x, asteroidSize.y), dist, defaultMass, 0, 1, BaseAsteroid, AsteroidCol);
                         }
                     }
                 }
@@ -559,10 +618,10 @@ public class PlanetCreator : MonoBehaviour
         }
     }
 
-    public void Generate(float _Volume, float _Distance, float _Mass, Vector2 _AxisTilt, float _OrbitalSpeed, GameObject _Prefab)
+    public void Generate(float _Volume, float _Distance, float _Mass, float _AxisTilt, float _OrbitalSpeed, GameObject _Prefab, Gradient _PlanetGradient)
     {
         float angle = RandGen.Next(0, 360) / (Mathf.PI / 180);
-        Vector3 SpawnPos = new Vector3(Mathf.Cos(angle), Mathf.Cos(angle) * _AxisTilt.x, Mathf.Sin(angle)).normalized * _Distance;
+        Vector3 SpawnPos = new Vector3(Mathf.Cos(angle), Mathf.Cos(angle) * _AxisTilt, Mathf.Sin(angle)).normalized * _Distance;
     
 
         GameObject _Instance = Instantiate(_Prefab, SpawnPos, Quaternion.identity, SystemObjectRef.transform);
@@ -584,10 +643,8 @@ public class PlanetCreator : MonoBehaviour
         if (_Instance.TryGetComponent<PlanetLighting>(out pltemp))
         {
             pltemp.Star = star;
-            if (_Prefab == BasePlanet)
-                pltemp.BaseColor = PlanetColors.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
-            else if (_Prefab == BaseAsteroid)
-                pltemp.BaseColor = AsteroidColor.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
+                pltemp.BaseColor = _PlanetGradient.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
+
         }
         //==============================================================
         //Set Start Velocity
@@ -595,7 +652,7 @@ public class PlanetCreator : MonoBehaviour
         Gravity XGravRef = _Instance.GetComponent<Gravity>();
         //--------------------------------------------------------------
         Vector3 ParalellDir = (_Instance.transform.position - star.transform.position).normalized;
-        Vector3 ProductVector = new Vector3(-ParalellDir.z, -ParalellDir.z * _AxisTilt.x, ParalellDir.x).normalized;
+        Vector3 ProductVector = new Vector3(-ParalellDir.z, -ParalellDir.z * _AxisTilt, ParalellDir.x).normalized;
         //--------------------------------------------------------------
         XGravRef.StartVelocityType = Gravity.StartVelType.Auto;
         XGravRef.StartVelocity = ProductVector;

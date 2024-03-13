@@ -48,7 +48,10 @@ public class SystemManager : MonoBehaviour
             }
         
     }
-    
+    public void AddBody(Transform  _gravTransform, Gravity _gravScript, float _mass)
+    {
+        BodiesInSystem.Add(new Body(_gravTransform, _gravScript, _mass));
+    }
 
 }
 

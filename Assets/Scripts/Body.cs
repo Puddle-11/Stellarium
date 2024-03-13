@@ -11,6 +11,13 @@ public class Body
         b_gravity = _gravRef;
         b_mass = _gravRef.Mass;
     }
+    public Body(Transform _transform, Gravity _gravRef, float _mass)
+    {
+
+        b_transform = _transform;
+        b_gravity = _gravRef;
+        b_mass = _mass;
+    }
 
     public Transform b_transform;
     public Gravity b_gravity;

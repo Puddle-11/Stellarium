@@ -42,12 +42,7 @@ public class Gravity : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        /*
-        if(StartVelocityType == StartVelType.Auto)
-        {
-            StartvelFactor = 100;
-        }
-        */
+   
         CalculateGravity();
     }
     private void Start()
@@ -101,31 +96,24 @@ public class Gravity : MonoBehaviour
     {
         Vector3 Force = Vector3.zero;
         //Checking to see if this body is inside the system, if outside the bounds, apply force towards the center of the system
+        
         if(Vector3.Distance(transform.position, SysManager.transform.position) > SysManager.SystemSize)
         {
-            gameObject.SetActive(false);
-            // Vector3 dir = Vector3.Normalize(SysManager.transform.position - transform.position);
-            //Force += dir * SysManager.SystemSafeForce * Mass;
+             Vector3 dir = Vector3.Normalize(SysManager.transform.position - transform.position);
+            Force += dir * SysManager.SystemSafeForce * Mass;
         }
+        
         //Loop through all the bodies in system and average the force between them
         //the Big O notation is O((n-1)n) keep each system bellow 50 bodies, feel free to optimize i couldnt find a way to, while maintaining accuracy
         for (int i = 0; i < SysManager.BodiesInSystem.Count; i++)
         {
             //Skip this object when applyinf force
-            if (SysManager.BodiesInSystem[i].b_gravity != this)
+            if (SysManager.BodiesInSystem[i].b_transform != null && SysManager.BodiesInSystem[i].b_transform != transform)
             {
                 float distance = Vector3.Distance(SysManager.BodiesInSystem[i].b_transform.position, transform.position);
                 float tempForce = (SysManager.LocalgravityScale * Mass * SysManager.BodiesInSystem[i].b_mass) / Mathf.Pow(distance, 2);
-                Vector3 dir = Vector3.zero;
                 //If object is within repulsion distance then reverse the gravity direction
-                if (distance < SysManager.RepulsionDistance)
-                {
-                     dir = Vector3.Normalize(transform.position - SysManager.BodiesInSystem[i].b_transform.position);
-                }
-                else
-                {
-                     dir = Vector3.Normalize(SysManager.BodiesInSystem[i].b_transform.position - transform.position);
-                }
+                Vector3 dir = distance < SysManager.RepulsionDistance ? Vector3.Normalize(transform.position - SysManager.BodiesInSystem[i].b_transform.position) : Vector3.Normalize(SysManager.BodiesInSystem[i].b_transform.position - transform.position);
                     Force += dir * tempForce;
             }
         }
