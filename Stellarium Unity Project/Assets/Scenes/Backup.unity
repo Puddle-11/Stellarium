@@ -4981,7 +4981,7 @@ MonoBehaviour:
   minMass: 0.01
   defaultVolume: 1
   minVolume: 0
-  defaultDarkColor: {r: 0, g: 0.09019608, b: 0.101960786, a: 1}
+  defaultDarkColor: {r: 0, g: 0.050980397, b: 0.08627451, a: 1}
   binaryStarFrequency: 20
   binaryStarPrefab: {fileID: 8804692045172019004, guid: c7f8a92107ab19440b3ee1e1193ba222,
     type: 3}
